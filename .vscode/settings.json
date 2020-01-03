@@ -1,0 +1,42 @@
+{
+	"editor.minimap.enabled": true,
+	"editor.acceptSuggestionOnEnter": "off",
+	"editor.insertSpaces": false,
+	"42header.email": "weilin@student.42.fr",
+	"explorer.confirmDragAndDrop": false,
+	"git.enableSmartCommit": true,
+	"explorer.confirmDelete": false,
+	"terminal.integrated.fontFamily": "Meslo LG M DZ for Powerline",
+	"workbench.editor.enablePreview": false,
+	"42header.username": "weilin",
+	"editor.mouseWheelZoom": true,
+	"editor.renderIndentGuides": true,
+	// "workbench.iconTheme": "material-icon-theme",
+	// "editor.fontFamily": "Source Code Pro",
+	"editor.fontFamily": "Menlo, Monaco, 'Courier New', monospace",
+	"window.zoomLevel": 1,
+	"phpfmt.exclude": [
+		"AllmanStyleBraces"
+	],
+	"phpfmt.smart_linebreak_after_curly": true,
+	"phpfmt.psr2": false,
+	"phpfmt.detect_indent": true,
+	
+	"files.exclude": {
+		"**/*.dSYM": true,
+		"**/libptf": true
+	},
+	"[c]": {"editor.defaultFormatter": "ms-vscode.cpptools"},
+	// "C_Cpp.formatting": "Default",
+	"workbench.colorTheme": "Atom One Dark",
+	// "workbench.iconTheme": "material-icon-theme",
+	"liveServer.settings.donotShowInfoMsg": true,
+	// "[php]": {
+	// 	"editor.defaultFormatter": "bmewburn.vscode-intelephense-client"
+	// },
+	// "[sql]": {
+	// 	"editor.defaultFormatter": "adpyke.vscode-sql-formatter"
+	// },
+	// "liveServer.settings.donotVerifyTags": true,
+
+}
