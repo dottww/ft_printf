@@ -1,0 +1,33 @@
+{
+	"folders": [
+		{
+			"path": "/Users/weilin/Desktop/Projects/ft_printf"
+		},
+		{
+			"path": "/Users/weilin/Desktop/Projects/ft_printf/libptf/ft_printf_svend"
+		},
+		{
+			"path": "/Users/weilin/Desktop/Projects/ft_printf/libptf/ft_printf_jae"
+		},
+		{
+			"path": "/Users/weilin/Desktop/Projects/ft_printf/libptf/ft_printf_antoine"
+		},
+		{
+			"path": "/Users/weilin/Desktop/Projects/ft_printf/libptf/ft_printf_lpan"
+		},
+		{
+			"path": "/Users/weilin/Desktop/Projects/ft_printf/libptf/ft_printf_clbergon"
+		},
+		{
+			"path": "/Users/weilin/Desktop/Projects/ft_printf/libptf/ft_printf_cchi"
+		}
+	],
+	"settings": {
+		"files.associations": {
+			"stdio.h": "c",
+			"ft_printf.h": "c",
+			"unistd.h": "c",
+			"libft.h": "c"
+		}
+	},
+}

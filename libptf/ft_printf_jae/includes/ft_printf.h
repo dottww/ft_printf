@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jaelee <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: weilin <weilin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/28 18:42:52 by jaelee            #+#    #+#             */
-/*   Updated: 2019/01/07 00:29:08 by jaelee           ###   ########.fr       */
+/*   Updated: 2020/02/14 17:22:21 by weilin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ typedef struct	s_pfinfo
 	char		*bf;
 	int			i;
 	int			fd;
-	int			ret;
+	int			nb_printf;
 }				t_pfinfo;
 
 int				ft_printf(const char *fmt, ...);

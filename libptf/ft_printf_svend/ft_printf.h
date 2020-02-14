@@ -6,7 +6,7 @@
 /*   By: weilin <weilin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/27 16:40:47 by stherkil          #+#    #+#             */
-/*   Updated: 2020/02/13 16:24:29 by weilin           ###   ########.fr       */
+/*   Updated: 2020/02/14 12:59:48 by weilin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 # include <unistd.h>
 # include <stdarg.h>
-# include "../libft/libft.h"
+# include "libft/libft.h"
 
 int					ft_printf(char *s, ...);
 

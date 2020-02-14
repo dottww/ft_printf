@@ -6,43 +6,96 @@
 /*   By: weilin <weilin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/11 16:48:26 by weilin            #+#    #+#             */
-/*   Updated: 2019/12/23 19:07:02 by weilin           ###   ########.fr       */
+/*   Updated: 2020/02/14 17:29:15 by weilin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "ft_printf.h"
 #include <stdio.h>
+#include <unistd.h>
 #include <stdarg.h>
-// #include "ft_printf.h"
+// #include "libft/libft.h"
+void	ft_putchar(char c)
+{
+	write(1, &c, 1);
+}
+
 int ft_printf(const char *fmt, ...)
 {
-	int nb_printf;
-	va_list ap;
+	t_pfinfo e;
 
-	nb_printf = 0;
-	va_start(ap, fmt); // put everything in format into ap
-	printf("%s",fmt);
-	
-	if (*fmt == '%' && *(fmt + 1) == 'c' && *(fmt + 2) == '%' && *(fmt + 3) == 'c')
+	e.nb_printf = 0;
+	va_start(e.valist, fmt); // put everything in format into valist
+
+	char arg;
+	while (fmt[e.i])
 	{
-		char arg = (char)va_arg(ap, int);
-		nb_printf+=printf("%c", arg);
-		char arg2 = (char)va_arg(ap, int);
-		nb_printf+=printf("%c", arg2);
+		if (fmt[e.i] == '%')
+		{
+			arg = (char)va_arg(e.valist, int);
+			ft_putchar(arg);
+			i = i + 2;
+		}
+		else if (fmt[i] != '%')
+		{
+			write(1, fmt + i, 1);
+			i++;
+		}
 	}
 
-	// nb_printf = ft_vprintf(format, ap);// take out each argument one by one from ap
-	va_end(ap);
-	return (nb_printf);
+	// nb_printf = ft_vprintf(format, valist);// take out each argument one by one from valist
+	va_end(e.valist);
+	return (e.nb_printf);
+}
+
+void my(void)
+{	// char *c1="%c\n";
+	// char *ptr = "%c%c%c";
+	char *ptr2 = "1C-Nothing_%1.3d%_";
+
+	// char *ptr = c2;
+	// printf(ptr, 'c', 'd');
+	int k = ft_printf("%c%c%c", 't', 'j', 'i');
+	printf("\n%d", k);
+	printf(ptr2, -1);
+	(void)ptr2;
+}
+void t1(void)
+{	
+	// printf("1-Simple String.", 0);
+	// printf("2-Stringception _%s_", "Hello World");
+	// printf("3-Stringception _%12s_", "Hello World");
+	// printf("4-Stringception _%-12s_", "Hello World");
+	// printf("5-Stringception _%20.5s_", "Hello World");
+	// printf("6-Stringception _%-20.5s_", "Hello World");
+	// printf("7-Stringception _%20s_", "Hello World");
+	// printf("7-Stringception _%020s_", "Hello World");
+	// printf("8-Stringception _%0-.20s_", "Hello World");
+	// printf("9-Stringception _%20s_", "Hello World");
+	// printf("A-Stringception _%20s_", "Hello World");
+	// printf("B-Stringception _%20.s_", "Hello World");
+	// printf("C-Stringception _%-#20s_", "Hello World");
+}
+void n1(void)
+{	
+	// printf("1-Simple String.", 0);
+	// printf("2-Stringception _%s_", "Hello World");
+	// printf("3-Stringception _%12s_", "Hello World");
+	// printf("4-Stringception _%-12s_", "Hello World");
+	// printf("5-Stringception _%20.5s_", "Hello World");
+	// printf("6-Stringception _%-20.5s_", "Hello World");
+	printf("7-Stringception _%20d_", -'*');
+	printf("7-Stringception _%020d_", -'*');
+	// printf("8-Stringception _%0-.20s_", "Hello World");
+	// printf("9-Stringception _%20s_", "Hello World");
+	// printf("A-Stringception _%20s_", "Hello World");
+	// printf("B-Stringception _%20.s_", "Hello World");
+	// printf("C-Stringception _%-#20s_", "Hello World");
 }
 int main()
 {
-	// char *c1="%c\n";
-	char *c2 = "%c%c%c%c\n";
-	char *ptr = c2;
-	// printf(ptr, 'c', 'd');
-	int k = ft_printf(ptr, 'e', 'f');
-	printf("%d", k);
-
+	my();
+	// n1();
 	// char *conv2="%s\n";
 	// printf(conv2, "string");
 
