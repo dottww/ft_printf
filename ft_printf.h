@@ -6,13 +6,12 @@
 /*   By: weilin <weilin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 16:37:37 by weilin            #+#    #+#             */
-/*   Updated: 2020/02/14 17:24:09 by weilin           ###   ########.fr       */
+/*   Updated: 2020/02/14 19:45:44 by weilin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_PRINTF_H
 # define FT_PRINTF_H
-
 
 // # define BUFF_SIZE 10000
 # include "libft/libft.h"
@@ -34,13 +33,14 @@ typedef struct	s_flags
 
 typedef struct	s_pfinfo
 {
-	va_list		ap;
+	va_list		valist;
 	t_flags		flags;
-	// t_mod		mod;
 	char		*bf;
 	int			i;
 	int			fd;
 	int			nb_printf;
+	int			len;
+	// t_mod		mod;
 }				t_pfinfo;
 
 int				ft_printf(const char *fmt, ...);
