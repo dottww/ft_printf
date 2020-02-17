@@ -29,7 +29,8 @@
 			"unistd.h": "c",
 			"libft.h": "c",
 			"stdarg.h": "c",
-			"limits.h": "c"
+			"limits.h": "c",
+			"ios": "c"
 		}
 	},
 }

@@ -6,7 +6,7 @@
 /*   By: weilin <weilin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/11 16:48:26 by weilin            #+#    #+#             */
-/*   Updated: 2020/02/17 16:59:45 by weilin           ###   ########.fr       */
+/*   Updated: 2020/02/17 19:10:59 by weilin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,6 @@ void	print_char(t_data *t, unsigned char ch)
 void	type_chars(char type, t_data *t)
 {
 	unsigned char	ch;
-	// char			*str;
 
 	t->flag.minus == 1 ? t->flag.zero = 0 : 0;
 	if (type == 'c')
@@ -51,15 +50,16 @@ void	type_chars(char type, t_data *t)
 		ch = (unsigned char)va_arg(t->valist, int);
 		print_char(t, ch);
 	}
-	// else if (type == 's')
-	// {
-	// 	str = (char*)va_arg(e->ap, char*);
-	// 	if (str == NULL)
-	// 		return (print_null_str(e));
-	// 	if (!(e->bf = ft_strdup(str)))
-	// 		return ;
-	// 	print_str(e);
-	// }
+	/*char			*str;
+	else if (type == 's')
+	{
+		str = (char*)va_arg(t->valist, char*);
+		if (str == NULL)
+			return (print_null_str(t));
+		if (!(t->bf = ft_strdup(str)))
+			return ;
+		print_str(t);
+	}*/
 
 }
 

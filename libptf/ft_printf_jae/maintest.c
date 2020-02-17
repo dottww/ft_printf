@@ -6,14 +6,14 @@
 /*   By: weilin <weilin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/16 19:17:21 by lgaultie          #+#    #+#             */
-/*   Updated: 2020/02/17 18:56:55 by weilin           ###   ########.fr       */
+/*   Updated: 2020/02/17 18:05:43 by weilin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
 #include <limits.h>
 #include <float.h>
-#include "include/ft_printf.h"
+#include "includes/ft_printf.h"
 // #include "libft.h"
 
 
@@ -37,7 +37,7 @@ void rest2(void)
 	printf("06) Vrai PRINTF : |%-10d|\n", 64);
 	ft_printf("06) Mon PRINTF  : |%-10d|\n", 64);
 	printf("07) Vrai PRINTF : |%.10d|\n", 100);
-	ft_printf("07) Mon PRINTF  : |%.10d|\n", 100);
+	ft_printf("07) Mon PRINTF  : |%.10d|\n", 100);s
 	printf("08) Vrai PRINTF : |%10.5d|\n", 100);
 	ft_printf("08) Mon PRINTF  : |%10.5d|\n", 100);
 	printf("09) Vrai PRINTF : |%5.10d|\n", 64);
@@ -1770,14 +1770,7 @@ int		main(void)
 {
 	// c();
 	// s();
-	int i=32;
-	while (i>-32)
-	{
-		ft_printf("%x", i);
-		ft_printf("\n");
-		i--;
-	}
-	// ft_printf("%c can it print?",'t');
+	ft_printf("%b",4294);
 	// rest();
 	// rest2();
 	return (0);
