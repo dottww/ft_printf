@@ -6,7 +6,7 @@
 /*   By: weilin <weilin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/28 18:40:58 by jaelee            #+#    #+#             */
-/*   Updated: 2020/02/15 21:01:18 by weilin           ###   ########.fr       */
+/*   Updated: 2020/02/16 15:35:24 by weilin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ static void		get_input(const char *fmt, t_pfinfo *e)
 int				ft_printf(const char *fmt, ...)
 {
 	t_pfinfo		e;
+	int				len;
 
 	ft_bzero(&e, sizeof(e));
 	va_start(e.ap, fmt);

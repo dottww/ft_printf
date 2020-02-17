@@ -6,7 +6,7 @@
 /*   By: weilin <weilin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/28 18:42:52 by jaelee            #+#    #+#             */
-/*   Updated: 2020/02/14 18:02:33 by weilin           ###   ########.fr       */
+/*   Updated: 2020/02/16 15:34:50 by weilin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,6 @@ typedef struct	s_pfinfo
 	int			i;
 	int			fd;
 	int			ret;
-	int			len;
 }				t_pfinfo;
 
 int				ft_printf(const char *fmt, ...);

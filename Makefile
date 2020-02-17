@@ -3,57 +3,59 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: weilin <marvin@42.fr>                      +#+  +:+       +#+         #
+#    By: weilin <weilin@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/01/11 16:48:33 by weilin            #+#    #+#              #
-#    Updated: 2019/02/12 20:06:13 by weilin           ###   ########.fr        #
+#    Updated: 2020/02/17 16:56:08 by weilin           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = ft_printf
+NAME = libftprintf.a
 
-SRC = main.c
+LIB_FOLDER = libft/
+LIB_FILES = ft_atoi ft_strlen ft_bzero ft_isdigit ft_strchr
 
-INCL = fillit.h
+FILES = ft_printf parse
+FILES+= $(addprefix $(LIB_FOLDER),$(LIB_FILES))
 
-OBJS = $(SRC:.c=.o)
+CC = gcc
+FLAG = -Wall -Wextra -Werror -g -I $(INC_DIR)
 
 RM = rm -rf
 
-FLAG = -Wall -Wextra -Werror
+CCH_DIR = cache/
+SRC_DIR = src/
+INC_DIR = include/
 
-LIBFT = libft/libft.a
+SRC = $(addprefix $(SRC_DIR),$(addsuffix .c,$(FILES)))
+OBJ = $(addprefix $(CCH_DIR),$(addsuffix .o,$(FILES)))
 
 all: $(NAME)
 
-$(NAME): $(LIBFT) $(OBJS)
-	gcc -g $(FLAG) -L ./libft -lft $(SRC) -o $@
-# gcc -g $(FLAG) -L ./libft -lft $(OBJS) -o $@
-# to use outside lib, must have that lib already compiled to .a so be able to use it
-# -I is to tell the current project header the place where to find ouside header
-# -L is to tell the current project header the place where to find ouside lib
-# -l tells please use/read lib"ft".a
-# $@ == $(NAME)
+$(NAME): $(OBJ)
+	ar rcs $@ $^
+# Running "ar s" on an archive is equivalent to running ranlib on it.
 
-$(LIBFT):
-	make -C libft all
-#it will call the makefile in the destination
+$(CCH_DIR)%.o: $(SRC_DIR)%.c | $(CCH_DIR)
+	$(CC) $(FLAG) -c $< -o $@
 
-%.o: %.c
-	gcc -c $< -o $@ -I libft/
-#if .o is older than .c, then do the content
-# $< means the first prerequisite
-# $^ means the all prerequisites
+$(CCH_DIR):
+	mkdir $@
+	mkdir $(CCH_DIR)$(LIB_FOLDER)
 
 clean:
-	$(RM) $(OBJS)
+	$(RM) $(CCH_DIR)
 	$(RM) *.out*
-# make -C libft clean
 
 fclean: clean
 	$(RM) $(NAME)
-# make -C libft fclean
 
-re: fclean all
+re: fclean
+	$(MAKE) all
 
-.PHONY: all clean fclean re
+norm:
+	@echo $(RED)
+	@echo $(END)
+	# norminette $(SRC) $(INC_DIR) | grep -v Norme -B1 || true
+
+.PHONY: all clean fclean re norm
