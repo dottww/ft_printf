@@ -30,7 +30,8 @@
 			"libft.h": "c",
 			"stdarg.h": "c",
 			"limits.h": "c",
-			"ios": "c"
+			"ios": "c",
+			"sstream": "c"
 		}
 	},
 }

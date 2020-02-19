@@ -6,7 +6,7 @@
 /*   By: weilin <weilin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/16 19:17:21 by lgaultie          #+#    #+#             */
-/*   Updated: 2020/02/19 23:28:00 by weilin           ###   ########.fr       */
+/*   Updated: 2020/02/19 23:56:53 by weilin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -1772,8 +1772,8 @@ ft_printf("--------------------%%s--------------------\n");			//Perfect
 }
 int		main(void)
 {
-	// c();
-	// s();
+	c();
+	s();
 	// s/width/prec
 	// ft_printf("%-5.10s. is a string\n", "987654");
 	// ft_printf("%-6.10s. is a string\n", "987654");
@@ -1781,18 +1781,19 @@ int		main(void)
 	// ft_printf("%-8.10s. is a string\n", "987654");
 	// ft_printf("%-2.6s. is a string", "321012");
 	// p();
+	// %
 	printf("titi.%-0004%.\n");
 	ft_printf("titi.%-0004%.\n");
 
 	//p
-	// printf("%p\n","\0");
-	// ft_printf("%p\n","\0");
-	// printf("%p\n","/0");
-	// ft_printf("%p\n","/0");
-	// printf("%p\n","");
-	// ft_printf("%p\n","");
-	// printf("%p\n",NULL);
-	// ft_printf("%p\n",NULL);
+	printf("%p\n","\0");
+	ft_printf("%p\n","\0");
+	printf("%p\n","/0");
+	ft_printf("%p\n","/0");
+	printf("%p\n","");
+	ft_printf("%p\n","");
+	printf("%p\n",NULL);
+	ft_printf("%p\n",NULL);
 	
 	// ft_printf("%x", i);
 	//width

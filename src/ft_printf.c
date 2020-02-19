@@ -6,7 +6,7 @@
 /*   By: weilin <weilin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/11 16:48:26 by weilin            #+#    #+#             */
-/*   Updated: 2020/02/19 23:31:05 by weilin           ###   ########.fr       */
+/*   Updated: 2020/02/20 00:02:43 by weilin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,11 +42,9 @@ void	print_char(t_data *t, unsigned char ch)
 
 void	fillwidth_str(t_data *t)
 {
-	int	len;
 	int	i;
 
-	len = ft_strlen(t->bf);
-	i = t->flag.width - len;
+	i = t->flag.width - ft_strlen(t->bf);
 	while (i > 0)
 	{
 		t->nb_print += ((t->flag.zero) == 1 ?
@@ -239,15 +237,18 @@ void	type_addr(t_data *t)
 }
 void	get_percent(t_data *t)
 {
+	int tmp;
+	
+	tmp = t->flag.width;
 	if (t->flag.minus == 1)
 	{
 		t->nb_print += write(t->fd, "%", 1);
-		while (t->flag.width-- > 1)
+		while (tmp-- > 1)
 			t->nb_print += write(t->fd, " ", 1);
 	}
 	else
 	{
-		while (t->flag.width-- > 1)
+		while (tmp-- > 1)
 			t->nb_print += (t->flag.zero ?
 					write(t->fd, "0", 1) : write(t->fd, " ", 1));
 		t->nb_print += write(t->fd, "%", 1);
