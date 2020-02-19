@@ -6,7 +6,7 @@
 /*   By: weilin <weilin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/11 16:48:26 by weilin            #+#    #+#             */
-/*   Updated: 2020/02/17 19:10:59 by weilin           ###   ########.fr       */
+/*   Updated: 2020/02/19 20:30:15 by weilin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,84 @@ void	print_char(t_data *t, unsigned char ch)
 	}
 	t->i++;
 }
+void	print_null_str(t_data *t)
+{
+	int	len;
+	int i;
 
+	len = t->flag.prec < 0 ? 6 : t->flag.prec;
+	i = t->flag.width - len;
+	while (i > 0)
+	{
+		t->nb_printf += ((t->flag.zero) == 1 ?
+			write(t->fd, "0", 1) : write(t->fd, " ", 1));
+		i--;
+	}
+	t->nb_printf += write(t->fd, "(null)", len);
+	t->i++;
+}
+void	print_width_str(t_data *t)
+{
+	int	len;
+	int	i;
+
+	len = ft_strlen(t->bf);
+	i = t->flag.width - len;
+	while (i > 0)
+	{
+		t->nb_printf += ((t->flag.zero) == 1 ?
+			write(t->fd, "0", 1) : write(t->fd, " ", 1));
+		i--;
+	}
+}
+void	print_str(t_data *t)
+{
+	char	*tmp;
+
+	if (t->flag.prec >= 0 &&
+			t->flag.prec <= (int)ft_strlen(t->bf))
+	{
+		tmp = ft_strsub(t->bf, 0, t->flag.prec);
+		free(t->bf);
+		t->bf = tmp;
+	}
+	if (!(t->bf))
+		return ;
+	else if (t->flag.minus == 1)
+	{
+		t->nb_printf += write(t->fd, t->bf, ft_strlen(t->bf));
+		print_width_str(t);
+	}
+	else
+	{
+		print_width_str(t);
+		t->nb_printf += write(t->fd, t->bf, ft_strlen(t->bf));
+	}
+	t->i++;
+	free(t->bf);
+}
 void	type_chars(char type, t_data *t)
+{
+	unsigned char	ch;
+	char			*str;
+
+	t->flag.minus == 1 ? t->flag.zero = 0 : 0;
+	if (type == 'c')
+	{
+		ch = (unsigned char)va_arg(t->valist, int);
+		print_char(t, ch);
+	}
+	else if (type == 's')
+	{
+		str = (char*)va_arg(t->valist, char*);
+		if (str == NULL)
+			return (print_null_str(t));
+		if (!(t->bf = ft_strdup(str)))
+			return ;
+		print_str(t);
+	}
+}
+/*void	type_num(char type, t_data *t)
 {
 	unsigned char	ch;
 
@@ -50,7 +126,7 @@ void	type_chars(char type, t_data *t)
 		ch = (unsigned char)va_arg(t->valist, int);
 		print_char(t, ch);
 	}
-	/*char			*str;
+	char			*str;
 	else if (type == 's')
 	{
 		str = (char*)va_arg(t->valist, char*);
@@ -59,14 +135,15 @@ void	type_chars(char type, t_data *t)
 		if (!(t->bf = ft_strdup(str)))
 			return ;
 		print_str(t);
-	}*/
-
+	}
 }
+*/
 
 void parse_type(const char *fmt, t_data *t)
 {
-	/*if (ft_strchr("oxX", fmt[t->i])) //b?
-		get_base(fmt[t->i], t);
+	/*
+	if (ft_strchr("oxX", fmt[t->i])) //b?
+		type_num(fmt[t->i], t);
 	else if (fmt[t->i] == '%')
 		get_percent(t);
 	else if (fmt[t->i] == 'd' || fmt[t->i] == 'i')
@@ -84,12 +161,71 @@ void parse_type(const char *fmt, t_data *t)
 		print_char(t, fmt[t->i]);
 }
 
+void	init_flag(t_data *t)
+{
+	t->flag.plus = 0;
+	t->flag.minus = 0;
+	t->flag.zero = 0;
+	t->flag.space = 0;
+	t->flag.hash = 0;
+	t->flag.width = 0;
+	t->flag.prec = -1;
+}
+
+void parse_prec(const char *fmt, t_data *t)
+{
+	if (t->flag.prec >= 0)
+	{
+		t->i++;
+		return;
+	} //if already exist then do not take more prec
+	else if (fmt[t->i] == '.' && fmt[t->i + 1] == '*')
+	{
+		// t->flag.prec = va_arg(t->valist, int);
+		t->flag.prec = 0;
+		t->i += 2;
+	}
+	if (fmt[t->i] == '.' && ft_isdigit(fmt[t->i + 1]))
+	{
+		t->i++;
+		t->flag.prec = ft_atoi(fmt + t->i);
+		// while (ft_isdigit(fmt[t->i])) //jump ft_int_len
+		// 	t->i++;
+		t->i+=ft_int_len(t->flag.prec);
+	}
+	else
+		t->flag.prec = 0;
+}
+
+void parse_flag(const char *fmt, t_data *t)
+{
+	while (ft_strchr("'+-0# *.123456789", fmt[t->i])) //hlLjz
+	{
+		fmt[t->i] == '+' ? t->flag.plus = 1 : 0;
+		fmt[t->i] == '-' ? t->flag.minus = 1 : 0;
+		fmt[t->i] == '0' ? t->flag.zero = 1 : 0;
+		fmt[t->i] == '#' ? t->flag.hash = 1 : 0;
+		fmt[t->i] == ' ' ? t->flag.space = 1 : 0;
+		//fmt[t->i] == '*' ? parse_width(t) : 0;
+		//LL size
+		if (fmt[t->i] == '.')
+			parse_prec(fmt, t);
+		else if (ft_isdigit(fmt[t->i]))
+		{
+			t->flag.width = ft_atoi(fmt + t->i);
+			t->i+=ft_int_len(t->flag.prec);
+			// while (ft_isdigit(fmt[t->i])) //jump ft_int_len
+			// 	t->i++;
+		}
+		else
+			t->i++;
+	}
+}
 void parse(const char *fmt, t_data *t)
 {
 	t->i++;
-	zero_flag(t);
-	parse_spec(fmt, t);
-	//pending
+	init_flag(t);
+	parse_flag(fmt, t);
 	if (t->i > (int)ft_strlen(fmt) - 1)
 		return;
 	parse_type(fmt, t);

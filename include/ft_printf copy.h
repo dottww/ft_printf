@@ -6,7 +6,7 @@
 /*   By: weilin <weilin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 16:37:37 by weilin            #+#    #+#             */
-/*   Updated: 2020/02/19 20:30:15 by weilin           ###   ########.fr       */
+/*   Updated: 2020/02/19 17:45:29 by weilin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,63 @@
 # include <limits.h>
 # include <stdio.h>
 
+typedef struct s_flag2
+{
+	int plus;
+	int minus;
+	int zero;
+	int space;
+	int hash;
+	int width;
+	int prec;
+	
+	char type;
+	int pad;
+	// int		neg;
+} t_flag2;
+
+typedef struct	s_flag
+{
+	int plus;
+	int minus;
+	int zero;
+	int space;
+	int hash;
+	int width;
+	int prec;
+	int pad;
+	char type;
+	int i;
+	int count;
+	char *str;
+}				t_flag;
+
+/*function that initialize the struct info to 0*/
+void	ft_init_struct_info(t_flag *info)
+{
+	info->minus = 0;
+	info->zero = 0;
+	info->pad = 0;
+	info->width = 0;
+	info->prec = -1;
+	info->type = 0;
+}
+/*functions that printf struct info*/
+void	ft_printf_debug(t_flag *info)
+{
+	printf("----------------DEBUG-------------\n");
+	printf("-------------struct info----------\n");
+	printf("info minus:			%d\n", info->minus);
+	printf("info zero:			%d\n", info->zero);
+	printf("info padding:			%d\n", info->pad);
+	printf("info width:			%d\n", info->width);
+	printf("info precision:			%d\n", info->prec);
+	printf("info count:			%d\n", info->count);
+	printf("info i:				%d\n", info->i);
+	printf("info str:			%s\n", info->str);
+	printf("info type:			%c\n", info->type);
+	printf("----------------------------------\n");
+}
 typedef enum	e_mod
 {
 	mod_non = 0,
@@ -34,17 +91,7 @@ typedef enum	e_mod
 	mod_L
 }				t_mod;
 
-typedef struct s_flag
-{
-	int plus;
-	int minus;
-	int zero;
-	int space;
-	int hash;
-	int width;
-	int prec;
-	// int		neg;
-} t_flag;
+
 
 typedef struct s_data
 {
@@ -60,8 +107,8 @@ typedef struct s_data
 
 int ft_printf(const char *fmt, ...);
 void parse(const char *fmt, t_data *t);
-void init_flag(t_data *t);
-void parse_flag(const char *fmt, t_data *t);
+void zero_flag(t_data *t);
+void parse_spec(const char *fmt, t_data *t);
 void parse_width(t_data *t);
 void parse_prec(const char *fmt, t_data *t);
 void parse_type(const char *fmt, t_data *t);

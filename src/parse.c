@@ -6,23 +6,14 @@
 /*   By: weilin <weilin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/15 20:54:00 by weilin            #+#    #+#             */
-/*   Updated: 2020/02/16 16:12:02 by weilin           ###   ########.fr       */
+/*   Updated: 2020/02/19 19:01:25 by weilin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	zero_flag(t_data *t)
-{
-	t->flag.plus = 0;
-	t->flag.minus = 0;
-	t->flag.zero = 0;
-	t->flag.space = 0;
-	t->flag.hash = 0;
-	t->flag.width = 0;
-	t->flag.prec = 0;
-}
 
+/*
 void parse_width(t_data *t)
 {
 	t->flag.width = va_arg(t->valist, int);
@@ -32,6 +23,7 @@ void parse_width(t_data *t)
 		t->flag.minus = 1;
 	}
 }
+*/
 
 void parse_prec(const char *fmt, t_data *t)
 {
@@ -58,14 +50,14 @@ void parse_prec(const char *fmt, t_data *t)
 
 void parse_spec(const char *fmt, t_data *t)
 {
-	while (ft_strchr("+-0# *.123456789", fmt[t->i])) //hlLjz
+	while (ft_strchr("'+-0# *.123456789", fmt[t->i])) //hlLjz
 	{
 		fmt[t->i] == '+' ? t->flag.plus = 1 : 0;
 		fmt[t->i] == '-' ? t->flag.minus = 1 : 0;
 		fmt[t->i] == '0' ? t->flag.zero = 1 : 0;
 		fmt[t->i] == '#' ? t->flag.hash = 1 : 0;
 		fmt[t->i] == ' ' ? t->flag.space = 1 : 0;
-		fmt[t->i] == '*' ? parse_width(t) : 0;
+		//fmt[t->i] == '*' ? parse_width(t) : 0;
 		//LL size
 		if (fmt[t->i] == '.')
 			parse_prec(fmt, t);

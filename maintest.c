@@ -6,7 +6,7 @@
 /*   By: weilin <weilin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/16 19:17:21 by lgaultie          #+#    #+#             */
-/*   Updated: 2020/02/17 18:56:55 by weilin           ###   ########.fr       */
+/*   Updated: 2020/02/19 20:29:42 by weilin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -1671,7 +1671,34 @@ void rest(void)
 	free(tab);
 	free(tab2);
 }
+
+
+void c(void)
+{
+ft_printf("--------------------%%c--------------------\n");		//Perfect
+	printf("01) Vrai PRINTF : |%c|\n", 'a');
+	ft_printf("01) Mon PRINTF  : |%c|\n", 'a');
+	printf("02) Vrai PRINTF : |%-c|\n", 'z');
+	ft_printf("02) Mon PRINTF  : |%-c|\n", 'z');
+	printf("03) Vrai PRINTF : |%-----c|\n", '!');
+	ft_printf("03) Mon PRINTF  : |%-----c|\n", '!');
+	printf("04) Vrai PRINTF : |%5c|\n", 'R');
+	ft_printf("04) Mon PRINTF  : |%5c|\n", 'R');
+	printf("05) Vrai PRINTF : |%-5c|\n", 'R');
+	ft_printf("05) Mon PRINTF  : |%-5c|\n", 'R');
+	printf("06) Vrai PRINTF : |%1c|\n", '3');
+	ft_printf("06) Mon PRINTF  : |%1c|\n", '3');
+	printf("07) Vrai PRINTF : |%c|\n", '\0');
+	ft_printf("07) Mon PRINTF  : |%c|\n", '\0');
+	printf("08) Vrai PRINTF : |%5c|\n", '\0');
+	ft_printf("08) Mon PRINTF  : |%5c|\n", '\0');
+	printf("09) Vrai PRINTF : |%-5c|\n", '\0');
+	ft_printf("09) Mon PRINTF  : |%-5c|\n", '\0');
+	printf("10) Vrai PRINTF : |%1c|\n", '\0');
+	ft_printf("10} Mon PRINTF  : |%1c|\n", '\0');
+}
 */
+
 void s(void)
 {
 ft_printf("--------------------%%s--------------------\n");			//Perfect
@@ -1740,43 +1767,21 @@ ft_printf("--------------------%%s--------------------\n");			//Perfect
 	printf("31) Vrai PRINTF : |%-1.s|\n", NULL);
 	ft_printf("31) Mon PRINTF  : |%-1.s|\n", NULL);	
 }
-
-void c(void)
-{
-ft_printf("--------------------%%c--------------------\n");		//Perfect
-	printf("01) Vrai PRINTF : |%c|\n", 'a');
-	ft_printf("01) Mon PRINTF  : |%c|\n", 'a');
-	printf("02) Vrai PRINTF : |%-c|\n", 'z');
-	ft_printf("02) Mon PRINTF  : |%-c|\n", 'z');
-	printf("03) Vrai PRINTF : |%-----c|\n", '!');
-	ft_printf("03) Mon PRINTF  : |%-----c|\n", '!');
-	printf("04) Vrai PRINTF : |%5c|\n", 'R');
-	ft_printf("04) Mon PRINTF  : |%5c|\n", 'R');
-	printf("05) Vrai PRINTF : |%-5c|\n", 'R');
-	ft_printf("05) Mon PRINTF  : |%-5c|\n", 'R');
-	printf("06) Vrai PRINTF : |%1c|\n", '3');
-	ft_printf("06) Mon PRINTF  : |%1c|\n", '3');
-	printf("07) Vrai PRINTF : |%c|\n", '\0');
-	ft_printf("07) Mon PRINTF  : |%c|\n", '\0');
-	printf("08) Vrai PRINTF : |%5c|\n", '\0');
-	ft_printf("08) Mon PRINTF  : |%5c|\n", '\0');
-	printf("09) Vrai PRINTF : |%-5c|\n", '\0');
-	ft_printf("09) Mon PRINTF  : |%-5c|\n", '\0');
-	printf("10) Vrai PRINTF : |%1c|\n", '\0');
-	ft_printf("10} Mon PRINTF  : |%1c|\n", '\0');
-}
-
 int		main(void)
 {
 	// c();
-	// s();
-	int i=32;
-	while (i>-32)
-	{
-		ft_printf("%x", i);
-		ft_printf("\n");
-		i--;
-	}
+	s();
+	//width
+	// printf("%.2s",NULL);// (null)
+	//segmentation fault
+	// printf("%s",42); 
+	// int i=32;
+	// while (i>-32)
+	// {
+	// 	ft_printf("%x", i);
+	// 	ft_printf("\n");
+	// 	i--;
+	// }
 	// ft_printf("%c can it print?",'t');
 	// rest();
 	// rest2();
