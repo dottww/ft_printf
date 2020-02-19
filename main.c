@@ -1,19 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   maintest.c                                         :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: weilin <weilin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/16 19:17:21 by lgaultie          #+#    #+#             */
-/*   Updated: 2020/02/19 23:28:00 by weilin           ###   ########.fr       */
+/*   Updated: 2020/02/19 22:24:52 by weilin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
 #include <limits.h>
 #include <float.h>
-#include "include/ft_printf.h"
+// #include "include/ft_printf.h"
 // #include "libft.h"
 
 
@@ -1614,30 +1614,27 @@ void rest2(void)
 	printf("20) Vrai PRINTF : |%llu| |%llu|\n", (unsigned long long)-1, (unsigned long long)ULLONG_MAX + 1);
 	ft_printf("20) Mon PRINTF  : |%llu| |%llu|\n", (unsigned long long)-1, (unsigned long long)ULLONG_MAX + 1);
 }
-*/
-void p(void)
+
+void rest(void)
 {
 	int		*tab = malloc(sizeof(int) * 10);
 	int		*tab2 = malloc(0);
 	
-	// ft_printf("--------------------%%p--------------------\n");			//perfect
-	// printf("test %-7C %007d%-10.2ls!!\n", 0xd777, 0x45, "L〻");
-	// ft_printf("test %-7C %007d%-10.2ls!!\n", 0xd777, 0x45, "L〻");
-	
-
 	ft_printf("--------------------%%p--------------------\n");			//perfect
 	printf("%4.2s %-1.s\n" , "coco", NULL);
 	ft_printf("%4.2s %-1.s\n" , "coco", NULL);
 	ft_printf("--------------------%%p--------------------\n");			//perfect
 	printf("Coucou %.0s\n%s%---12s\n", "hi", "coco", NULL);
 	ft_printf("Coucou %.0s\n%s%---12s\n", "hi", "coco", NULL);
-	
 	ft_printf("--------------------%%p--------------------\n");			//perfect
-	printf("PLUS%+%\n");
-	ft_printf("PLUS%+%\n");
+	printf("test %-7C %007d%-10.2ls!!\n", 0xd777, 0x45, "L〻");
+	// ft_printf("test %-7C %007d%-10.2ls!!\n", 0xd777, 0x45, "L〻");
 	ft_printf("--------------------%%p--------------------\n");			//perfect
-	printf("titi.% +---3.5%.et%%%-0004%.et.%+1%\n");
-	ft_printf("titi.% +---3.5%.et%%%-0004%.et.%+1%\n");
+	printf("%+%\n");
+	ft_printf("%+%\n");
+	ft_printf("--------------------%%p--------------------\n");			//perfect
+	printf("titi % +---12.5% et%%%0004% et %+1%\n");
+	ft_printf("titi % +---12.5% et%%%0004% et %+1%\n");
 	ft_printf("--------------------%%p--------------------\n");			//perfect
 	printf("|%1.4s| et |%-6.8s| et |%4.2s|\n", "tuuu", "12345", "hu");
 	ft_printf("|%1.4s| et |%-6.8s| et |%4.2s|\n", "tuuu", "12345", "hu");
@@ -1700,8 +1697,6 @@ ft_printf("--------------------%%c--------------------\n");		//Perfect
 	printf("10) Vrai PRINTF : |%1c|\n", '\0');
 	ft_printf("10} Mon PRINTF  : |%1c|\n", '\0');
 }
-
-
 void s(void)
 {
 ft_printf("--------------------%%s--------------------\n");			//Perfect
@@ -1770,31 +1765,24 @@ ft_printf("--------------------%%s--------------------\n");			//Perfect
 	printf("31) Vrai PRINTF : |%-1.s|\n", NULL);
 	ft_printf("31) Mon PRINTF  : |%-1.s|\n", NULL);	
 }
+*/
+
+
 int		main(void)
 {
 	// c();
-	// s();
-	// s/width/prec
-	// ft_printf("%-5.10s. is a string\n", "987654");
-	// ft_printf("%-6.10s. is a string\n", "987654");
-	// ft_printf("%-7.10s. is a string\n", "987654");
-	// ft_printf("%-8.10s. is a string\n", "987654");
-	// ft_printf("%-2.6s. is a string", "321012");
-	// p();
-	printf("titi.%-0004%.\n");
-	ft_printf("titi.%-0004%.\n");
-
-	//p
-	// printf("%p\n","\0");
-	// ft_printf("%p\n","\0");
-	// printf("%p\n","/0");
-	// ft_printf("%p\n","/0");
-	// printf("%p\n","");
-	// ft_printf("%p\n","");
-	// printf("%p\n",NULL);
-	// ft_printf("%p\n",NULL);
+	printf("%p\n","");
+	printf("%p",NULL);
 	
-	// ft_printf("%x", i);
+	// printf("06) Vrai PRINTF : |%2s|\n", "string");
+	// printf("06) Vrai PRINTF : |%3s|\n", "string");
+	// printf("06) Vrai PRINTF : |%4s|\n", "string");
+	// printf("07) Vrai PRINTF : |%-2s|\n", "string");
+	// printf("07) Vrai PRINTF : |%-3s|\n", "string");
+	// printf("07) Vrai PRINTF : |%-4s|\n", "string");
+	// ft_printf("06) Mon PRINTF  : |%2s|\n", "string");
+	// ft_printf("07) Mon PRINTF  : |%-2s|\n", "string");
+
 	//width
 	// printf("%.2s",NULL);// (null)
 	//segmentation fault

@@ -6,7 +6,7 @@
 /*   By: weilin <weilin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 16:37:37 by weilin            #+#    #+#             */
-/*   Updated: 2020/02/19 20:30:15 by weilin           ###   ########.fr       */
+/*   Updated: 2020/02/19 22:55:52 by weilin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ typedef struct s_data
 	char *bf;
 	int i;
 	int fd;
-	int nb_printf;
+	int nb_print;
 	int len;
 	t_mod		mod;
 } t_data;

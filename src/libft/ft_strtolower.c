@@ -1,27 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parse.c                                            :+:      :+:    :+:   */
+/*   ft_strtolower.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: weilin <weilin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/02/15 20:54:00 by weilin            #+#    #+#             */
-/*   Updated: 2020/02/19 21:15:18 by weilin           ###   ########.fr       */
+/*   Created: 2018/11/19 18:28:20 by weilin            #+#    #+#             */
+/*   Updated: 2020/02/19 22:29:24 by weilin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
 
-
-/*
-void parse_width(t_data *t)
+void	ft_strtolower(char *str)
 {
-	t->flag.width = va_arg(t->valist, int);
-	if (t->flag.width < 0)
+	int i;
+
+	i = 0;
+	while (str[i] != '\0')
 	{
-		t->flag.width = -(t->flag.width);
-		t->flag.minus = 1;
+		if (str[i] >= 'A' && str[i] <= 'Z')
+			str[i] += 32;
+		i++;
 	}
 }
-*/
-

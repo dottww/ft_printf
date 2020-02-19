@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: weilin <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: weilin <weilin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/12 18:50:36 by weilin            #+#    #+#             */
-/*   Updated: 2019/02/01 13:27:12 by weilin           ###   ########.fr       */
+/*   Updated: 2020/02/19 22:29:26 by weilin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,7 @@ char				*ft_strnew(size_t size);
 char				*ft_strnew_c(size_t size, char c);
 void				ft_strdel(char **as);
 void				ft_strclr(char *s);
+void				ft_strtolower(char *str);
 void				ft_striter(char *s, void (*f)(char*));
 void				ft_striteri(char *s, void (*f)(unsigned int, char *));
 char				*ft_strmap(char const *s, char (*f)(char));

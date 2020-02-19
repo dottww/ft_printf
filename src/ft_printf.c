@@ -6,20 +6,20 @@
 /*   By: weilin <weilin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/11 16:48:26 by weilin            #+#    #+#             */
-/*   Updated: 2020/02/19 20:30:15 by weilin           ###   ########.fr       */
+/*   Updated: 2020/02/19 23:31:05 by weilin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	print_zerowidth_char(t_data *t)
+void	fillwidth_char(t_data *t)
 {
 	int i;
 
 	i = t->flag.width - 1;
 	while (i > 0)
 	{
-		t->nb_printf += ((t->flag.zero == 1) ?
+		t->nb_print += ((t->flag.zero == 1) ?
 			write(t->fd, "0", 1) : write(t->fd, " ", 1));
 		i--;
 	}
@@ -27,35 +27,20 @@ void	print_zerowidth_char(t_data *t)
 
 void	print_char(t_data *t, unsigned char ch)
 {
-	if (t->flag.minus)
+	if (t->flag.minus == 1)
 	{
-		t->nb_printf += write(t->fd, &ch, 1);
-		print_zerowidth_char(t);
+		t->nb_print += write(t->fd, &ch, 1);
+		fillwidth_char(t);
 	}
 	else
 	{
-		print_zerowidth_char(t);
-		t->nb_printf += write(t->fd, &ch, 1);
+		fillwidth_char(t);
+		t->nb_print += write(t->fd, &ch, 1);
 	}
 	t->i++;
 }
-void	print_null_str(t_data *t)
-{
-	int	len;
-	int i;
 
-	len = t->flag.prec < 0 ? 6 : t->flag.prec;
-	i = t->flag.width - len;
-	while (i > 0)
-	{
-		t->nb_printf += ((t->flag.zero) == 1 ?
-			write(t->fd, "0", 1) : write(t->fd, " ", 1));
-		i--;
-	}
-	t->nb_printf += write(t->fd, "(null)", len);
-	t->i++;
-}
-void	print_width_str(t_data *t)
+void	fillwidth_str(t_data *t)
 {
 	int	len;
 	int	i;
@@ -64,7 +49,7 @@ void	print_width_str(t_data *t)
 	i = t->flag.width - len;
 	while (i > 0)
 	{
-		t->nb_printf += ((t->flag.zero) == 1 ?
+		t->nb_print += ((t->flag.zero) == 1 ?
 			write(t->fd, "0", 1) : write(t->fd, " ", 1));
 		i--;
 	}
@@ -82,15 +67,15 @@ void	print_str(t_data *t)
 	}
 	if (!(t->bf))
 		return ;
-	else if (t->flag.minus == 1)
+	if (t->flag.minus == 1)
 	{
-		t->nb_printf += write(t->fd, t->bf, ft_strlen(t->bf));
-		print_width_str(t);
+		t->nb_print += write(t->fd, t->bf, ft_strlen(t->bf));
+		fillwidth_str(t);
 	}
 	else
 	{
-		print_width_str(t);
-		t->nb_printf += write(t->fd, t->bf, ft_strlen(t->bf));
+		fillwidth_str(t);
+		t->nb_print += write(t->fd, t->bf, ft_strlen(t->bf));
 	}
 	t->i++;
 	free(t->bf);
@@ -108,11 +93,13 @@ void	type_chars(char type, t_data *t)
 	}
 	else if (type == 's')
 	{
-		str = (char*)va_arg(t->valist, char*);
-		if (str == NULL)
-			return (print_null_str(t));
-		if (!(t->bf = ft_strdup(str)))
-			return ;
+		if ((str = (char*)va_arg(t->valist, char*)) != NULL)
+		{
+			if (!(t->bf = ft_strdup(str)))
+				return ;
+		}
+		else if (!(t->bf = ft_strdup("(null)")))
+			return ;	
 		print_str(t);
 	}
 }
@@ -138,25 +125,156 @@ void	type_chars(char type, t_data *t)
 	}
 }
 */
+int			addr_precision(t_data *t)
+{
+	char	*tmp;
+	char	*new;
+	int		len;
+	int		i;
+
+	len = ft_strlen(t->bf);
+	if (t->flag.prec > len)
+	{
+		i = t->flag.prec - len;
+		if (!(tmp = ft_strnew(i)))
+			return (0);
+		while (i > 0)
+			tmp[--i] = '0';
+		if (!(new = ft_strjoin(tmp, t->bf)))
+			return (0);
+		free(tmp);
+		free(t->bf);
+		t->bf = new;
+	}
+	return (1);
+}
+void		print_width_addr(t_data *t)
+{
+	int len;
+	int i;
+
+	len = ft_strlen(t->bf) + 2;
+	i = t->flag.width - len;
+	while (i > 0)
+	{
+		t->nb_print += (t->flag.zero == 1 ?
+				write(t->fd, "0", 1) : write(t->fd, " ", 1));
+		i--;
+	}
+}
+
+void	print_hash_base(char type, t_data *t)
+{
+	if (type == 'o' && t->bf[0] != '0')
+		t->nb_print += write(t->fd, "0", 1);
+	else if (type == 'x' || type == 'X')
+		t->nb_print += write(t->fd, type == 'x' ? "0x" : "0X", 2);
+}
+void		print_addr(t_data *t)
+{
+	t->flag.space = 0;
+	t->flag.plus = 0;
+	addr_precision(t);
+	if (!(addr_precision(t)))
+		return ;
+	if (t->flag.minus == 1)
+	{
+		print_hash_base('x', t);
+		t->nb_print += write(t->fd, t->bf, ft_strlen(t->bf));
+		print_width_addr(t);
+	}
+	else
+	{
+		t->flag.zero == 0 ? print_width_addr(t) : 0;
+		print_hash_base('x', t);
+		t->flag.zero == 1 ? print_width_addr(t) : 0;
+		t->nb_print += write(t->fd, t->bf, ft_strlen(t->bf));
+	}
+	t->i++;
+	free(t->bf);
+}
+
+char	*ultoa_base(unsigned long int n, unsigned long int base)
+{
+	char				*val;
+	int					len;
+	unsigned long int	tmp;
+
+	len = 1;
+	tmp = n;
+	while (tmp >= base)
+	{
+		tmp /= base;
+		len++;
+	}
+	if (!(val = ft_strnew(len)))
+		return (NULL);
+	val[len] = '\0';
+	tmp = n;
+	while (tmp >= base)
+	{
+		val[--len] = (tmp % base) > 9 ?
+			(tmp % base) + 55 : (tmp % base) + '0';
+		tmp /= base;
+	}
+	val[--len] = (tmp % base) > 9 ?
+		(tmp % base) + 55 : (tmp % base) + '0';
+	return (val);
+}
+
+void	type_addr(t_data *t)
+{
+	unsigned long int val;
+
+	t->flag.minus == 1 ? t->flag.zero = 0 : 0;
+	val = va_arg(t->valist, unsigned long int);
+	if (t->flag.prec == 0)
+		t->bf = ft_strdup("\0");
+	else
+		t->bf = ultoa_base(val, 16);
+	if (!t->bf)
+		return ;
+	ft_strtolower(t->bf);
+	print_addr(t);
+}
+void	get_percent(t_data *t)
+{
+	if (t->flag.minus == 1)
+	{
+		t->nb_print += write(t->fd, "%", 1);
+		while (t->flag.width-- > 1)
+			t->nb_print += write(t->fd, " ", 1);
+	}
+	else
+	{
+		while (t->flag.width-- > 1)
+			t->nb_print += (t->flag.zero ?
+					write(t->fd, "0", 1) : write(t->fd, " ", 1));
+		t->nb_print += write(t->fd, "%", 1);
+	}
+	t->i++;
+}
 
 void parse_type(const char *fmt, t_data *t)
 {
 	/*
 	if (ft_strchr("oxX", fmt[t->i])) //b?
 		type_num(fmt[t->i], t);
-	else if (fmt[t->i] == '%')
-		get_percent(t);
+	
 	else if (fmt[t->i] == 'd' || fmt[t->i] == 'i')
 		get_int(t);
 	else if (fmt[t->i] == 'u' || fmt[t->i] == 'U')
 		get_uint(fmt[t->i], e);
-	else if (fmt[t->i] == 'p')
-		get_addr(t);
+	
 	else if (fmt[t->i] == 'f' || fmt[t->i] == 'F')
 		get_float(fmt[t->i], e);		
 	*/
  	if (fmt[t->i] == 'c' || fmt[t->i] == 's')
 		type_chars(fmt[t->i], t);
+	else if (fmt[t->i] == 'p')
+		type_addr(t);
+	else if (fmt[t->i] == '%')
+		get_percent(t);
 	else if (fmt[t->i] != '\0')
 		print_char(t, fmt[t->i]);
 }
@@ -189,9 +307,8 @@ void parse_prec(const char *fmt, t_data *t)
 	{
 		t->i++;
 		t->flag.prec = ft_atoi(fmt + t->i);
-		// while (ft_isdigit(fmt[t->i])) //jump ft_int_len
-		// 	t->i++;
-		t->i+=ft_int_len(t->flag.prec);
+		while (ft_isdigit(fmt[t->i]))
+			t->i++;
 	}
 	else
 		t->flag.prec = 0;
@@ -213,9 +330,8 @@ void parse_flag(const char *fmt, t_data *t)
 		else if (ft_isdigit(fmt[t->i]))
 		{
 			t->flag.width = ft_atoi(fmt + t->i);
-			t->i+=ft_int_len(t->flag.prec);
-			// while (ft_isdigit(fmt[t->i])) //jump ft_int_len
-			// 	t->i++;
+			while (ft_isdigit(fmt[t->i]))
+				t->i++;
 		}
 		else
 			t->i++;
@@ -247,15 +363,15 @@ int ft_printf(const char *fmt, ...)
 				break;
 			else if (fmt[t.i] == '%' && fmt[t.i + 1] == '%')
 			{
-				t.nb_printf += write(t.fd, "%", 1);
+				t.nb_print += write(t.fd, "%", 1);
 				t.i += 2;
 			}
 			else if (fmt[t.i] == '%' && fmt[t.i + 1] != '%')
 				parse(fmt, &t);
 			else
-				t.nb_printf += write(t.fd, fmt + (t.i)++, 1);
+				t.nb_print += write(t.fd, fmt + (t.i)++, 1);
 		}
 	}
 	va_end(t.valist);
-	return (t.nb_printf);
+	return (t.nb_print);
 }
