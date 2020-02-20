@@ -6,7 +6,7 @@
 /*   By: weilin <weilin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 16:37:37 by weilin            #+#    #+#             */
-/*   Updated: 2020/02/20 18:08:20 by weilin           ###   ########.fr       */
+/*   Updated: 2020/02/20 23:04:18 by weilin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,32 @@
 # include "libft.h"
 # include <stdarg.h>
 # include <limits.h>
+
+	va_list valist;
+	t_flag flag;
+	char *bf;
+	int i;
+	int fd;
+	int nb_print;
+	int len;
+	t_mod		mod;
+}				t_data;
+void	ft_printf_debug(t_data *info)
+{
+	printf("----------------DEBUG-------------\n");
+	printf("-------------struct info----------\n");
+	printf("info minus:			%d\n", info->flag.plus);
+	printf("info minus:			%d\n", info->flag.minus);
+	printf("info zero:			%d\n", info->flag.zero);
+	printf("info space:			%d\n", info->flag.space);
+	printf("info hash:			%d\n", info->flag.hash);
+	printf("info width:			%d\n", info->flag.width);
+	printf("info precision:			%d\n", info->flag.prec);
+	printf("info i:				%d\n", info->i);
+	printf("info str:			%s\n", info->bf);
+	printf("info len:			%c\n", info->len);
+	printf("----------------------------------\n");
+}
 
 typedef enum	e_mod
 {

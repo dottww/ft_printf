@@ -6,7 +6,7 @@
 /*   By: weilin <weilin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/16 19:17:21 by lgaultie          #+#    #+#             */
-/*   Updated: 2020/02/20 20:31:27 by weilin           ###   ########.fr       */
+/*   Updated: 2020/02/20 22:59:05 by weilin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -1634,9 +1634,19 @@ void p(void)
 ft_printf("--------------------%%p--------------------\n");			//perfect
 	int		*tab = malloc(sizeof(int) * 10);
 	int		*tab2 = malloc(0);
+	printf("00) Vrai PRINTF : |%020.0p|\n", "salut");
+	ft_printf("00) Mon PRINTF  : |%020.0p|\n", "salut");
+	printf("00) Vrai PRINTF : |%030.1p|\n", "salut");
+	ft_printf("00) Mon PRINTF  : |%030.1p|\n", "salut");
+	printf("00) Vrai PRINTF : |%+30.1p|\n", "salut");
+	ft_printf("00) Mon PRINTF  : |%+30.1p|\n", "salut");
+	printf("00) Vrai PRINTF : |%3.2p|\n", "salut");
+	ft_printf("00) Mon PRINTF  : |%3.2p|\n", "salut");
+	printf("00) Vrai PRINTF : |%20.2p|\n", "salut");
+	ft_printf("00) Mon PRINTF  : |%20.2p|\n", "salut");
 	printf("01) Vrai PRINTF : |%p|\n", "salut");
 	ft_printf("01) Mon PRINTF  : |%p|\n", "salut");
-	printf("02) Vrai PRINTF : |%-p|\n", tab2);
+/*	printf("02) Vrai PRINTF : |%-p|\n", tab2);
 	ft_printf("02) Mon PRINTF  : |%-p|\n", tab2);
 	printf("03) Vrai PRINTF : |%---------p|\n", "test2");
 	ft_printf("03) Mon PRINTF  : |%----------p|\n", "test2");
@@ -1674,6 +1684,8 @@ ft_printf("--------------------%%p_NULL--------------------\n");			//perfect
 // ft_printf("--------------------%%p-special char-------------------\n");			//perfect
 	// printf("test %-7C %007d%-10.2ls!!\n", 0xd777, 0x45, "L〻");
 	// ft_printf("test %-7C %007d%-10.2ls!!\n", 0xd777, 0x45, "L〻");
+*/
+
 }
 
 void s(void)
@@ -1794,10 +1806,9 @@ int		main(void)
 {
 	// c();
 	// s();
+	
 	// percent();
 	p();
-	
-	// p();
 	
 	// %
 	// printf("titi.%-0004%.\n");

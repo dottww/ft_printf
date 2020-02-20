@@ -6,7 +6,7 @@
 /*   By: weilin <weilin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/20 17:40:43 by weilin            #+#    #+#             */
-/*   Updated: 2020/02/20 20:48:47 by weilin           ###   ########.fr       */
+/*   Updated: 2020/02/20 22:56:16 by weilin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,9 +63,10 @@ void	print_addr(t_data *t)
 {
 	t->flag.space = 0;
 	t->flag.plus = 0;
-	addr_precision(t);
-	if (!(addr_precision(t)))
-		return ;
+	t->flag.prec = -1;
+	// addr_precision(t);
+	// if (!(addr_precision(t)))
+	// 	return ;
 	if (t->flag.minus == 1)
 	{
 		print_hash_base('x', t);

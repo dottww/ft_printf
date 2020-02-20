@@ -6,13 +6,12 @@
 /*   By: weilin <weilin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/15 20:54:00 by weilin            #+#    #+#             */
-/*   Updated: 2020/02/20 20:13:52 by weilin           ###   ########.fr       */
+/*   Updated: 2020/02/20 21:55:16 by weilin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-/*
 void	parse_width(t_data *t)
 {
 	t->flag.width = va_arg(t->valist, int);
@@ -22,7 +21,6 @@ void	parse_width(t_data *t)
 		t->flag.minus = 1;
 	}
 }
-*/
 
 void	parse_type(const char *fmt, t_data *t)
 {
@@ -70,14 +68,14 @@ void	parse_prec(const char *fmt, t_data *t)
 
 void	parse_flag(const char *fmt, t_data *t)
 {
-	while (ft_strchr("'+-0# *.123456789hlLjz", fmt[t->i])) //hlLjz*
+	while (ft_strchr("'+-0# *.123456789hlLjz", fmt[t->i])) //hlLjz*'
 	{
 		fmt[t->i] == '+' ? t->flag.plus = 1 : 0;
 		fmt[t->i] == '-' ? t->flag.minus = 1 : 0;
 		fmt[t->i] == '0' ? t->flag.zero = 1 : 0;
 		fmt[t->i] == '#' ? t->flag.hash = 1 : 0;
 		fmt[t->i] == ' ' ? t->flag.space = 1 : 0;
-		//fmt[t->i] == '*' ? parse_width(t) : 0;
+		fmt[t->i] == '*' ? parse_width(t) : 0;
 		//LL size
 		if (fmt[t->i] == '.')
 			parse_prec(fmt, t);
