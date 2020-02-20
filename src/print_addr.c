@@ -6,7 +6,7 @@
 /*   By: weilin <weilin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/20 17:40:43 by weilin            #+#    #+#             */
-/*   Updated: 2020/02/20 17:56:39 by weilin           ###   ########.fr       */
+/*   Updated: 2020/02/20 18:05:23 by weilin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,4 +110,3 @@ char	*ultoa_base(unsigned long int n, unsigned long int base)
 		(tmp % base) + 55 : (tmp % base) + '0';
 	return (s);
 }
-

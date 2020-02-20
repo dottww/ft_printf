@@ -6,14 +6,14 @@
 /*   By: weilin <weilin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/15 20:54:00 by weilin            #+#    #+#             */
-/*   Updated: 2020/02/20 17:46:10 by weilin           ###   ########.fr       */
+/*   Updated: 2020/02/20 18:04:30 by weilin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
 /*
-void parse_width(t_data *t)
+void	parse_width(t_data *t)
 {
 	t->flag.width = va_arg(t->valist, int);
 	if (t->flag.width < 0)
@@ -24,7 +24,7 @@ void parse_width(t_data *t)
 }
 */
 
-void parse_type(const char *fmt, t_data *t)
+void	parse_type(const char *fmt, t_data *t)
 {
  	if (fmt[t->i] == 'c' || fmt[t->i] == 's')
 		type_chars(fmt[t->i], t);
@@ -44,7 +44,7 @@ void parse_type(const char *fmt, t_data *t)
 	// 	type_float(fmt[t->i], t);		
 }
 
-void parse_prec(const char *fmt, t_data *t)
+void	parse_prec(const char *fmt, t_data *t)
 {
 	if (t->flag.prec >= 0)
 	{
@@ -68,7 +68,7 @@ void parse_prec(const char *fmt, t_data *t)
 		t->flag.prec = 0;
 }
 
-void parse_flag(const char *fmt, t_data *t)
+void	parse_flag(const char *fmt, t_data *t)
 {
 	while (ft_strchr("'+-0# *.123456789hlLjz", fmt[t->i])) //hlLjz*
 	{
@@ -91,7 +91,8 @@ void parse_flag(const char *fmt, t_data *t)
 			t->i++;
 	}
 }
-void parse(const char *fmt, t_data *t)
+
+void	parse(const char *fmt, t_data *t)
 {
 	t->i++;
 	init_flag(t);

@@ -6,21 +6,16 @@
 /*   By: weilin <weilin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 16:37:37 by weilin            #+#    #+#             */
-/*   Updated: 2020/02/20 17:58:04 by weilin           ###   ########.fr       */
+/*   Updated: 2020/02/20 18:08:20 by weilin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_PRINTF_H
 # define FT_PRINTF_H
 
-// # define BUFF_SIZE 10000
-//# define U (s[i - 5] == '#')
 # include "libft.h"
 # include <stdarg.h>
-# include <unistd.h>
-# include <stdlib.h>
 # include <limits.h>
-# include <stdio.h>
 
 typedef enum	e_mod
 {
@@ -34,7 +29,7 @@ typedef enum	e_mod
 	mod_L
 }				t_mod;
 
-typedef struct s_flag
+typedef	struct	s_flag
 {
 	int plus;
 	int minus;
@@ -44,9 +39,9 @@ typedef struct s_flag
 	int width;
 	int prec;
 	// int		neg;
-} t_flag;
+}				t_flag;
 
-typedef struct s_data
+typedef	struct	s_data
 {
 	va_list valist;
 	t_flag flag;
@@ -56,15 +51,15 @@ typedef struct s_data
 	int nb_print;
 	int len;
 	t_mod		mod;
-} t_data;
+}				t_data;
 
-int ft_printf(const char *fmt, ...);
-void parse(const char *fmt, t_data *t);
-void init_flag(t_data *t);
-void parse_flag(const char *fmt, t_data *t);
-void parse_width(t_data *t);
-void parse_prec(const char *fmt, t_data *t);
-void parse_type(const char *fmt, t_data *t);
+int		ft_printf(const char *fmt, ...);
+void	parse(const char *fmt, t_data *t);
+void	init_flag(t_data *t);
+void	parse_flag(const char *fmt, t_data *t);
+// void	parse_width(t_data *t);
+void	parse_prec(const char *fmt, t_data *t);
+void	parse_type(const char *fmt, t_data *t);
 
 void	type_chars(char type, t_data *t);
 void	type_addr(t_data *t);

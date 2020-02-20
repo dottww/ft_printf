@@ -6,13 +6,13 @@
 /*   By: weilin <weilin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/11 16:48:26 by weilin            #+#    #+#             */
-/*   Updated: 2020/02/20 17:46:10 by weilin           ###   ########.fr       */
+/*   Updated: 2020/02/20 18:05:37 by weilin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int ft_printf(const char *fmt, ...)
+int	ft_printf(const char *fmt, ...)
 {
 	t_data t;
 
