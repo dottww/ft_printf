@@ -6,7 +6,7 @@
 /*   By: weilin <weilin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/20 17:42:55 by weilin            #+#    #+#             */
-/*   Updated: 2020/02/20 17:43:40 by weilin           ###   ########.fr       */
+/*   Updated: 2020/02/20 20:48:46 by weilin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,6 @@ void	type_addr(t_data *t)
 		t->bf = ultoa_base(val, 16);
 	if (!t->bf)
 		return ;
-	ft_strtolower(t->bf);
+	// ft_strtolower(t->bf);
 	print_addr(t);
 }

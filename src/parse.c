@@ -6,7 +6,7 @@
 /*   By: weilin <weilin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/15 20:54:00 by weilin            #+#    #+#             */
-/*   Updated: 2020/02/20 18:04:30 by weilin           ###   ########.fr       */
+/*   Updated: 2020/02/20 20:13:52 by weilin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,6 @@ void	parse_type(const char *fmt, t_data *t)
 		type_chars(fmt[t->i], t);
 	else if (fmt[t->i] == '%')
 		type_percent(t);
-	else if (fmt[t->i] != '\0')
-		print_char(t, fmt[t->i]);
 	else if (fmt[t->i] == 'p')
 		type_addr(t);
 	else if (fmt[t->i] == 'd' || fmt[t->i] == 'i')
@@ -42,6 +40,8 @@ void	parse_type(const char *fmt, t_data *t)
 	// 	type_num(fmt[t->i], t);
 	// else if (fmt[t->i] == 'f' || fmt[t->i] == 'F')
 	// 	type_float(fmt[t->i], t);		
+	else if (fmt[t->i] != '\0')
+		print_char(t, fmt[t->i]);
 }
 
 void	parse_prec(const char *fmt, t_data *t)
