@@ -6,11 +6,12 @@
 /*   By: cchi <cchi@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/22 16:30:34 by cchi              #+#    #+#             */
-/*   Updated: 2019/07/25 14:52:54 by cchi             ###   ########.fr       */
+/*   Updated: 2019/07/29 09:16:29 by cchi             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+#include "libft.h"
 
 int			ft_nprintf2(const char *pa, char *buff, va_list ap)
 {
@@ -23,7 +24,7 @@ int			ft_nprintf2(const char *pa, char *buff, va_list ap)
 	nb = 0;
 	ft_arr_ft(ft.functptr);
 	ft_arr_p(ft.v);
-	prt = ft_stru_zero(prt);
+	prt = ft_stru_zero();
 	prt = ft_fg_width(pa, prt);
 	while ((*pa == ' ' || *pa == '#' || *pa == '+' || *pa == '-'
 			|| *pa == '0') && *pa)

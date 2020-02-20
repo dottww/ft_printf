@@ -6,12 +6,12 @@
 /*   By: cchi <cchi@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/27 13:57:30 by cchi              #+#    #+#             */
-/*   Updated: 2019/07/28 22:40:48 by cchi             ###   ########.fr       */
+/*   Updated: 2019/07/29 13:37:28 by cchi             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
 #include "libft.h"
+#include "ft_printf.h"
 
 char	*ft_mts_represent2(t_tp prt, char *str, int ng)
 {

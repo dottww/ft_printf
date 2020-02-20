@@ -6,12 +6,12 @@
 /*   By: cchi <cchi@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/08 10:53:25 by cchi              #+#    #+#             */
-/*   Updated: 2019/07/21 14:46:43 by cchi             ###   ########.fr       */
+/*   Updated: 2019/07/29 13:37:49 by cchi             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
 #include "libft.h"
+#include "ft_printf.h"
 
 void	calcul_p_2(char *power_2)
 {

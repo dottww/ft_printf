@@ -6,7 +6,7 @@
 /*   By: weilin <weilin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 16:37:37 by weilin            #+#    #+#             */
-/*   Updated: 2020/02/19 22:55:52 by weilin           ###   ########.fr       */
+/*   Updated: 2020/02/20 17:58:04 by weilin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,19 @@ void parse_prec(const char *fmt, t_data *t);
 void parse_type(const char *fmt, t_data *t);
 
 void	type_chars(char type, t_data *t);
+void	type_addr(t_data *t);
+void	type_percent(t_data *t);
+void	type_int(t_data *t);
+void	print_char(t_data *t, unsigned char ch);
+void	print_str(t_data *t);
+void	print_addr(t_data *t);
+void	print_hash_base(char type, t_data *t);
+void	fillwidth_char(t_data *t);
+void	fillwidth_str(t_data *t);
+void	fillwidth_addr(t_data *t);
+
+int		addr_precision(t_data *t);
+char	*ultoa_base(unsigned long int n, unsigned long int base);
 
 #endif
 

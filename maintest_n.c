@@ -1,5 +1,57 @@
 #include "ft_printf.h"
 
+void c()
+{
+	/* Memes tests avec les %c */
+
+	printf("%d\n", ft_printf("1caractere 1 %c caractere 2 %c\n", 'a', 'c'));
+	printf("%d\n\n", printf("1caractere 1 %c caractere 2 %c\n", 'a', 'c'));
+	
+	printf("%d\n", ft_printf("2caractere 1 %   c caractere 2 % c\n", 'a', 'c'));
+	printf("%d\n\n", printf("3caractere 1 %   c caractere 2 % c\n", 'a', 'c'));
+
+	printf("%d\n", ft_printf("4caractere 1 %12c caractere 2 %12c\n", 'a', 'c'));
+	printf("%d\n\n", printf("4caractere 1 %12c caractere 2 %12c\n", 'a', 'c'));
+	
+	printf("%d\n", ft_printf("4caractere 1 %-12c caractere 2 %-12c\n", 'a', 'c'));
+	printf("%d\n\n", printf("4caractere 1 %-12c caractere 2 %-12c\n", 'a', 'c'));
+
+	printf("%d\n", ft_printf("5caractere 1 %0c caractere 2 %0c\n", 'a', 'c'));
+	printf("%d\n\n", printf("5caractere 1 %0c caractere 2 %0c\n", 'a', 'c'));
+
+	printf("%d\n", ft_printf("6caractere 1 %012c caractere 2 %012c\n", 'a', 'c'));
+	printf("%d\n\n", printf("6caractere 1 %012c caractere 2 %012c\n\n", 'a', 'c'));
+
+	printf("%d\n", ft_printf("7caractere 1 %-012c caractere 2 %012c\n", 'a', 'c'));
+	printf("%d\n\n", printf("7caractere 1 %-012c caractere 2 %012c\n", 'a', 'c'));
+
+	printf("%d\n", ft_printf("8caractere 1 %*c caractere 2 %*c\n", 'a', 6, 6, 6));
+	printf("%d\n\n", printf("8caractere 1 %*c caractere 2 %*c\n", 'a', 6, 6, 6));
+
+	printf("%d\n", ft_printf("9caractere 1 %+c caractere 2 %+c\n", 'a', 6, 'c', 6));
+	printf("%d\n\n", printf("9caractere 1 %+c caractere 2 %+c\n\n", 'a', 6, 'c', 6));
+
+	printf("%d\n", ft_printf("10caractere 1 %+12c caractere 2 %+12c\n", 'a', 6, 'c', 6));
+	printf("%d\n\n", printf("10caractere 1 %+12c caractere 2 %+12c\n\n", 'a', 6, 'c', 6));
+
+	printf("%d\n", ft_printf("11caractere 1 %*12c caractere 2 %*12c\n", 'a', -6, 'a', 6));
+	printf("%d\n\n", printf("11caractere 1 %*12c caractere 2 %*12c\n\n", 'a', -6, 'a', 6));
+
+	printf("%d\n", ft_printf("12caractere 1 %-+5c caractere 2 %-+5c\n", 'a', 'c'));
+	printf("%d\n\n", printf("12caractere 1 %-+5c caractere 2 %-+5c\n\n", 'a', 'c'));
+
+	printf("%d\n", ft_printf("13caractere 1 %-+05c caractere 2 %-+05c\n", 'a', 'c'));
+	printf("%d\n\n", printf("13caractere 1 %-+05c caractere 2 %-+05c\n\n", 'a', 'c'));
+
+	printf("%d\n", ft_printf("14caractere 1 %+-5c caractere 2 %+-5c\n", 'a', 'c'));
+	printf("%d\n\n", printf("14caractere 1 %+-5c caractere 2 %+-5c\n\n", 'a', 'c'));
+
+	printf("%d\n", ft_printf("15caractere 1 %.c caractere 2 %.c\n", 'a', 'c'));
+	printf("%d\n\n", printf("15caractere 1 %.c caractere 2 %.c\n", 'a', 'c'));
+	
+	printf("%d\n", ft_printf("16caractere 1 %.6c caractere 2 %.6c\n", 'a', 'c'));
+	printf("%d\n\n", printf("16caractere 1 %.6c caractere 2 %.6c\n\n", 'a', 'c'));
+}
 
 int		main(void)
 {
@@ -12,7 +64,7 @@ int		main(void)
 	/* Pourquoi les ft_printf de ft_printf ? Parce que printf renvoie le nombre de caractere qu'il a affiche. Ainsi, on peut verifier si on renvoie bien le bon nombre.
 	   Attention ! Il doit y avoir un caractere de moins sur le ft_printf puisqu'il n'a qu'un \n, pour plus de lisibilite */
 
-	//printf("%d\n\n", ft_printf("%d\n\n", printf("%d\n", 2147483647)));
+	// printf("%d\n\n", ft_printf("%d\n\n", printf("%d\n", 2147483647)));
 
 	
 	/* Verifiez bien les bornes ! Elles ont tendance a boucler infini ... */
@@ -50,20 +102,20 @@ int		main(void)
 	// printf("%d\n", ft_printf("8chiffre 1 %*d chiffre 2 %*d\n", 42, 6, 6, 6));
 	// printf("%d\n\n", printf("8chiffre 1 %*d chiffre 2 %*d\n", 42, 6, 6, 6));
 
-	//printf("%d\n", ft_printf("9chiffre 1 %+d chiffre 2 %+d\n", 42, 6, -42, 6));
-	//printf("%d\n\n", printf("9chiffre 1 %+d chiffre 2 %+d\n\n", 42, 6, -42, 6));
+	// printf("%d\n", ft_printf("9chiffre 1 %+d chiffre 2 %+d\n", 42, 6, -42, 6));
+	// printf("%d\n\n", printf("9chiffre 1 %+d chiffre 2 %+d\n\n", 42, 6, -42, 6));
 
-	//printf("%d\n", ft_printf("10chiffre 1 %+12d chiffre 2 %+12d\n", 42, 6, -42, 6));
-	//printf("%d\n\n", printf("10chiffre 1 %+12d chiffre 2 %+12d\n\n", 42, 6, -42, 6));
+	// printf("%d\n", ft_printf("10chiffre 1 %+12d chiffre 2 %+12d\n", 42, 6, -42, 6));
+	// printf("%d\n\n", printf("10chiffre 1 %+12d chiffre 2 %+12d\n\n", 42, 6, -42, 6));
 
-	//printf("%d\n", ft_printf("11chiffre 1 %*12d chiffre 2 %*12*d\n", 42, -6, 42, 6));
-	//printf("%d\n\n", printf("11chiffre 1 %*12d chiffre 2 %*12d\n\n", 42, -6, 42, 6));
+	// printf("%d\n", ft_printf("11chiffre 1 %*12d chiffre 2 %*12*d\n", 42, -6, 42, 6));
+	// printf("%d\n\n", printf("11chiffre 1 %*12d chiffre 2 %*12d\n\n", 42, -6, 42, 6));
 
- 	//printf("%d\n", ft_printf("11chiffre 1 %*12d chiffre 2 %*12d\n", 42, -6, 42, 6));
- 	//printf("%d\n\n", printf("11chiffre 1 %*12d chiffre 2 %*12d\n\n", 42, -6, 42, 6));
+ 	// printf("%d\n", ft_printf("11chiffre 1 %*12d chiffre 2 %*12d\n", 42, -6, 42, 6));
+ 	// printf("%d\n\n", printf("11chiffre 1 %*12d chiffre 2 %*12d\n\n", 42, -6, 42, 6));
 
-	//printf("%d\n", ft_printf("12chiffre 1 %-+5d chiffre 2 %-+5d\n", 42, -42));
-	//printf("%d\n\n", printf("12chiffre 1 %-+5d chiffre 2 %-+5d\n\n", 42, -42));
+	// printf("%d\n", ft_printf("12chiffre 1 %-+5d chiffre 2 %-+5d\n", 42, -42));
+	// printf("%d\n\n", printf("12chiffre 1 %-+5d chiffre 2 %-+5d\n\n", 42, -42));
 
 	// printf("%d\n", ft_printf("13chiffre 1 %-+05d chiffre 2 %-+05d\n", 42, -42));
 	// printf("%d\n\n", printf("13chiffre 1 %-+05d chiffre 2 %-+05d\n\n", 42, -42));
@@ -80,58 +132,7 @@ int		main(void)
 
 
 
-	/* Memes tests avec les %c */
 
-	//printf("%d\n", ft_printf("1caractere 1 %c caractere 2 %c\n", 'a', 'c'));
-	//printf("%d\n\n", printf("1caractere 1 %c caractere 2 %c\n", 'a', 'c'));
-	
-	// printf("%d\n", ft_printf("2caractere 1 %   c caractere 2 % c\n", 'a', 'c'));
-	// printf("%d\n\n", printf("3caractere 1 %   c caractere 2 % c\n", 'a', 'c'));
-
-	//printf("%d\n", ft_printf("4caractere 1 %12c caractere 2 %12c\n", 'a', 'c'));
-	//printf("%d\n\n", printf("4caractere 1 %12c caractere 2 %12c\n", 'a', 'c'));
-
-	
-	// printf("%d\n", ft_printf("4caractere 1 %-12c caractere 2 %-12c\n", 'a', 'c'));
-	// printf("%d\n\n", printf("4caractere 1 %-12c caractere 2 %-12c\n", 'a', 'c'));
-
-	// printf("%d\n", ft_printf("5caractere 1 %0c caractere 2 %0c\n", 'a', 'c'));
-	// printf("%d\n\n", printf("5caractere 1 %0c caractere 2 %0c\n", 'a', 'c'));
-
-	//printf("%d\n", ft_printf("6caractere 1 %012c caractere 2 %012c\n", 'a', 'c'));
-	// printf("%d\n\n", printf("6caractere 1 %012c caractere 2 %012c\n\n", 'a', 'c'));
-
-	// printf("%d\n", ft_printf("7caractere 1 %-012c caractere 2 %012c\n", 'a', 'c'));
-	// printf("%d\n\n", printf("7caractere 1 %-012c caractere 2 %012c\n", 'a', 'c'));
-
-	// printf("%d\n", ft_printf("8caractere 1 %*c caractere 2 %*c\n", 'a', 6, 6, 6));
-	// printf("%d\n\n", printf("8caractere 1 %*c caractere 2 %*c\n", 'a', 6, 6, 6));
-
-	// printf("%d\n", ft_printf("9caractere 1 %+c caractere 2 %+c\n", 'a', 6, 'c', 6));
-	// printf("%d\n\n", printf("9caractere 1 %+c caractere 2 %+c\n\n", 'a', 6, 'c', 6));
-
-	// printf("%d\n", ft_printf("10caractere 1 %+12c caractere 2 %+12c\n", 'a', 6, 'c', 6));
-	// printf("%d\n\n", printf("10caractere 1 %+12c caractere 2 %+12c\n\n", 'a', 6, 'c', 6));
-
-	// printf("%d\n", ft_printf("11caractere 1 %*12c caractere 2 %*12c\n", 'a', -6, 'a', 6));
-	// printf("%d\n\n", printf("11caractere 1 %*12c caractere 2 %*12c\n\n", 'a', -6, 'a', 6));
-
-	// printf("%d\n", ft_printf("12caractere 1 %-+5c caractere 2 %-+5c\n", 'a', 'c'));
-	// printf("%d\n\n", printf("12caractere 1 %-+5c caractere 2 %-+5c\n\n", 'a', 'c'));
-
-	// printf("%d\n", ft_printf("13caractere 1 %-+05c caractere 2 %-+05c\n", 'a', 'c'));
-	// printf("%d\n\n", printf("13caractere 1 %-+05c caractere 2 %-+05c\n\n", 'a', 'c'));
-
-	// printf("%d\n", ft_printf("14caractere 1 %+-5c caractere 2 %+-5c\n", 'a', 'c'));
-	// printf("%d\n\n", printf("14caractere 1 %+-5c caractere 2 %+-5c\n\n", 'a', 'c'));
-
-	// printf("%d\n", ft_printf("15caractere 1 %.c caractere 2 %.c\n", 'a', 'c'));
-	// printf("%d\n\n", printf("15caractere 1 %.c caractere 2 %.c\n", 'a', 'c'));
-
-
-	
-	// printf("%d\n", ft_printf("16caractere 1 %.6c caractere 2 %.6c\n", 'a', 'c'));
-	// printf("%d\n\n", printf("16caractere 1 %.6c caractere 2 %.6c\n\n", 'a', 'c'));
 
 	
 	/* Memes tests avec les %o */
@@ -365,30 +366,30 @@ int		main(void)
 	// printf("%d\n\n", printf("7pointeur 1 %-012p pointeur 2 %012p\n\n", &c, &c));
 
 	/* Ce test boucle infini avec le vrai printf */
-//	ft_printf("%d\n", ft_printf("8pointeur 1 %*p pointeur 2 %*p\n\n", &c, 6, &c, 6));
-//	ft_printf("%d\n", ft_printf("9pointeur 1 %+p pointeur 2 %+p\n", &c, 6, &c, 6));
-//	printf("%d\n\n", printf("9pointeur 1 %+p pointeur 2 %+p\n\n", &c, 6, &c, 6));
-//
-//	ft_printf("%d\n", ft_printf("10pointeur 1 %+12p pointeur 2 %+12p\n", &c, 6, &c, 6));
-//	printf("%d\n\n", printf("10pointeur 1 %+12p pointeur 2 %+12p\n\n", &c, 6, &c, 6));
-//
-//	ft_printf("%d\n", ft_printf("11pointeur 1 %*12p pointeur 2 %*12p\n", &c, -6, &c, 6));
-//	printf("%d\n\n", printf("11pointeur 1 %*12p pointeur 2 %*12p\n\n", &c, -6, &c, 6));
-//
-//	ft_printf("%d\n", ft_printf("12pointeur 1 %-+5p pointeur 2 %-+5p\n", &c, &c));
-//	printf("%d\n\n", printf("12pointeur 1 %-+5p pointeur 2 %-+5p\n\n", &c, &c));
-//
-//	ft_printf("%d\n", ft_printf("13pointeur 1 %-+05p pointeur 2 %-+05p\n", &c, &c));
-//	printf("%d\n\n", printf("13pointeur 1 %-+05p pointeur 2 %-+05p\n\n", &c, &c));
-//
-//	ft_printf("%d\n", ft_printf("14pointeur 1 %+-5p pointeur 2 %+-5p\n", &c, &c));
-//	printf("%d\n\n", printf("14pointeur 1 %+-5p pointeur 2 %+-5p\n\n", &c, &c));
-//
-//	ft_printf("%d\n", ft_printf("15pointeur 1 %.p pointeur 2 %.p\n", &c, &c));
-//	printf("%d\n\n", printf("15pointeur 1 %.p pointeur 2 %.p\n\n", &c, &c));
-//
-//	ft_printf("%d\n", ft_printf("16pointeur 1 %.6p pointeur 2 %.6p\n", &c, &c));
-//	printf("%d\n\n", printf("16pointeur 1 %.6p pointeur 2 %.6p\n\n", &c, &c));
+	//	printf("%d\n", ft_printf("8pointeur 1 %*p pointeur 2 %*p\n\n", &c, 6, &c, 6));
+	//	printf("%d\n", ft_printf("9pointeur 1 %+p pointeur 2 %+p\n", &c, 6, &c, 6));
+	//	printf("%d\n\n", printf("9pointeur 1 %+p pointeur 2 %+p\n\n", &c, 6, &c, 6));
+	//
+	//	printf("%d\n", ft_printf("10pointeur 1 %+12p pointeur 2 %+12p\n", &c, 6, &c, 6));
+	//	printf("%d\n\n", printf("10pointeur 1 %+12p pointeur 2 %+12p\n\n", &c, 6, &c, 6));
+	//
+	//	printf("%d\n", ft_printf("11pointeur 1 %*12p pointeur 2 %*12p\n", &c, -6, &c, 6));
+	//	printf("%d\n\n", printf("11pointeur 1 %*12p pointeur 2 %*12p\n\n", &c, -6, &c, 6));
+	//
+	//	printf("%d\n", ft_printf("12pointeur 1 %-+5p pointeur 2 %-+5p\n", &c, &c));
+	//	printf("%d\n\n", printf("12pointeur 1 %-+5p pointeur 2 %-+5p\n\n", &c, &c));
+	//
+	//	printf("%d\n", ft_printf("13pointeur 1 %-+05p pointeur 2 %-+05p\n", &c, &c));
+	//	printf("%d\n\n", printf("13pointeur 1 %-+05p pointeur 2 %-+05p\n\n", &c, &c));
+	//
+	//	printf("%d\n", ft_printf("14pointeur 1 %+-5p pointeur 2 %+-5p\n", &c, &c));
+	//	printf("%d\n\n", printf("14pointeur 1 %+-5p pointeur 2 %+-5p\n\n", &c, &c));
+	//
+	//	printf("%d\n", ft_printf("15pointeur 1 %.p pointeur 2 %.p\n", &c, &c));
+	//	printf("%d\n\n", printf("15pointeur 1 %.p pointeur 2 %.p\n\n", &c, &c));
+	//
+	//	printf("%d\n", ft_printf("16pointeur 1 %.6p pointeur 2 %.6p\n", &c, &c));
+	//	printf("%d\n\n", printf("16pointeur 1 %.6p pointeur 2 %.6p\n\n", &c, &c));
 
 	/* Memes tests avec les %u */
 
@@ -634,7 +635,7 @@ int		main(void)
 
 
 // 	//d and i
-// 	//printf("%05.3d\n", 88);
+// 	// printf("%05.3d\n", 88);
 // printf("%05d\n", -12);
 // printf("\n");
 // printf("%05d\n", -12);
@@ -649,7 +650,7 @@ int		main(void)
 
 
 
-// 	//printf("%12*d\n", 42, 6);
+// 	// printf("%12*d\n", 42, 6);
 //    i$
 // $
 //  12$

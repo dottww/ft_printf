@@ -6,7 +6,7 @@
 #    By: weilin <weilin@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/01/11 16:48:33 by weilin            #+#    #+#              #
-#    Updated: 2020/02/19 22:56:54 by weilin           ###   ########.fr        #
+#    Updated: 2020/02/20 17:53:40 by weilin           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,8 +17,8 @@ LIB_FILES = ft_atoi ft_strlen ft_bzero ft_isdigit ft_strchr ft_int_len \
 			ft_strdup ft_strsub ft_strtolower ft_strjoin ft_strnew ft_strcat \
 			ft_strcpy
 
-FILES = ft_printf
-# parse
+FILES = ft_printf parse tool type_csp print_chars print_addr type_di
+
 FILES+= $(addprefix $(LIB_FOLDER),$(LIB_FILES))
 
 CC = gcc

@@ -6,14 +6,14 @@
 /*   By: weilin <weilin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/01 19:15:32 by angagnie          #+#    #+#             */
-/*   Updated: 2020/02/13 15:42:22 by weilin           ###   ########.fr       */
+/*   Updated: 2020/02/20 17:05:33 by weilin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
-
 #include <stdio.h>
 #include <string.h>
+// #include "ft_printf.h"
+#include "include/ft_printf.h"
 
 #define TEST(FMT,...)													\
 	pf = asprintf(&pf_dst,FMT,##__VA_ARGS__);							\
@@ -29,6 +29,13 @@
 			dprintf(1, "\e[1;32m|%s|\e[0m\n", ft_dst);					\
 	}
 
+
+#define TEST2(FMT,...)													\
+	pf = printf(FMT,##__VA_ARGS__);							\
+	ft = ft_printf(FMT,##__VA_ARGS__);						\
+	if (ft != pf)														\
+		dprintf(2, "Fail : return value Real(%i vs %i)Yours\n", pf, ft);
+
 int		main(int ac, char **av)
 {
 	char	*pf_dst;
@@ -36,7 +43,9 @@ int		main(int ac, char **av)
 	int		pf;
 	int		ft;
 
-	TEST("1-Simple String.", 0);
+	printf("1-Simple String.%s",42);
+	
+	/*
 	TEST("2-Stringception _%s_", "Hello World");
 	TEST("3-Stringception _%20s_", "Hello World");
 	TEST("4-Stringception _%-20s_", "Hello World");
@@ -116,15 +125,17 @@ int		main(int ac, char **av)
 	TEST("26-Wildcard _%*.*s_%*.*s_", 50, 5, "Hello world", 5, 50, "Hello world");
 	TEST("27-Wildcard _%*.*s_%*.*s_", 50, -5, "Hello world", -5, 50, "Hello world");
 	TEST("28-Char {%05.c}", 0);
+// */
+// 	int a,b,c,d,e,f;
+// 	ft_printf("~ Flag%nWooWo% %[% 20.010-5n]%n\n", &a, &b, &c);
+// 	printf("~ Flag%nWooWo% %[% 20.010-5n]%n\n", &d, &e, &f);
+// 	if (a != d || b != e || c != f)
+// 		ft_printf("FAIL : (Real,FT) (%i,%i) (%i,%i) (%i,%i)\n", d,a,e,b,f,c);
 
-	int a,b,c,d,e,f;
-	ft_printf("~ Flag%nWooWo% %[% 20.010-5n]%n\n", &a, &b, &c);
-	printf("~ Flag%nWooWo% %[% 20.010-5n]%n\n", &d, &e, &f);
-	if (a != d || b != e || c != f)
-		ft_printf("FAIL : (Real,FT) (%i,%i) (%i,%i) (%i,%i)\n", d,a,e,b,f,c);
-
-	TEST("%s", "The End");
+// 	TEST2("%s", "The End");
 	(void)ac;
 	(void)av;
+	(void)pf_dst;
+	(void)ft_dst;
 	return (0);
 }

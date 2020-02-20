@@ -5,3 +5,6 @@
 *.h.gch
 *.out.dSYM
 # .gitignore
+*.a
+tmp/*
+/tmp

@@ -6,12 +6,12 @@
 /*   By: cchi <cchi@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/17 15:05:46 by cchi              #+#    #+#             */
-/*   Updated: 2019/07/28 22:38:43 by cchi             ###   ########.fr       */
+/*   Updated: 2019/07/29 13:38:06 by cchi             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
 #include "libft.h"
+#include "ft_printf.h"
 
 int		ft_u(char *buff, unsigned long long int i)
 {

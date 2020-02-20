@@ -1,8 +1,0 @@
-*~
-*.o
-*.a
-*.swp
-a.out
-ft_printf
-*.h.gch
-*.DS_Store

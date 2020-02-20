@@ -6,7 +6,7 @@
 /*   By: cchi <cchi@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/22 14:30:15 by cchi              #+#    #+#             */
-/*   Updated: 2019/07/25 17:11:58 by cchi             ###   ########.fr       */
+/*   Updated: 2019/07/29 09:06:59 by cchi             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,7 +94,7 @@ typedef	union		u_bin_long_double
 	t_ld_f				f;
 }					t_bin_ld;
 
-t_tp				ft_stru_zero(t_tp prt);
+t_tp				ft_stru_zero(void);
 unsigned long long	ft_x(va_list ap, t_lh lh);
 unsigned long long	c_i_m_ld(char *br, unsigned long long e, char *si, int bs);
 unsigned long long	c_i_m(char *b1, unsigned long long e1, char *s1, int bs);

@@ -1,39 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_buffer.c                                        :+:      :+:    :+:   */
+/*   tp_zeroing.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cchi <cchi@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/23 13:32:01 by cchi              #+#    #+#             */
-/*   Updated: 2019/07/28 22:37:31 by cchi             ###   ########.fr       */
+/*   Created: 2019/04/23 14:45:59 by cchi              #+#    #+#             */
+/*   Updated: 2019/07/29 09:18:24 by cchi             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-#include "libft.h"
 
-int	ft_buffer(char *buff, const char *c)
+t_tp	ft_stru_zero(void)
 {
-	int i;
-	int nb;
+	t_tp prt;
 
-	i = 0;
-	nb = 0;
-	while (i < BUFF_SIZE && buff[i])
-		i++;
-	while (*c)
-	{
-		if (*c && i < BUFF_SIZE)
-			buff[i++] = *c;
-		c++;
-		if (i == BUFF_SIZE)
-		{
-			ft_putstr(buff);
-			nb += BUFF_SIZE;
-			ft_bzero(buff, BUFF_SIZE);
-			i = 0;
-		}
-	}
-	return (nb);
+	prt.minus = 0;
+	prt.dot = 0;
+	prt.op_width = 0;
+	prt.prc_width = -1;
+	prt.zero = 0;
+	prt.integ = 0;
+	prt.charact = 0;
+	prt.str = 0;
+	prt.hashtag = 0;
+	prt.plus = 0;
+	prt.space = 0;
+	prt.space_len = 0;
+	prt.zero_len = 0;
+	return (prt);
 }

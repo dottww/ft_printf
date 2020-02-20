@@ -105,5 +105,5 @@ int		ft_case_o(char *buff, va_list ap, t_tp prt, t_lh lh)
 	}
 	nb = ft_buffer(buff, str);
 	free(str);
-	return (nb);
+	return (0);
 }
