@@ -6,7 +6,7 @@
 /*   By: weilin <weilin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 16:37:37 by weilin            #+#    #+#             */
-/*   Updated: 2020/02/20 23:04:18 by weilin           ###   ########.fr       */
+/*   Updated: 2020/02/20 23:05:08 by weilin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,15 +17,6 @@
 # include <stdarg.h>
 # include <limits.h>
 
-	va_list valist;
-	t_flag flag;
-	char *bf;
-	int i;
-	int fd;
-	int nb_print;
-	int len;
-	t_mod		mod;
-}				t_data;
 void	ft_printf_debug(t_data *info)
 {
 	printf("----------------DEBUG-------------\n");
