@@ -6,7 +6,7 @@
 /*   By: weilin <weilin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 16:37:37 by weilin            #+#    #+#             */
-/*   Updated: 2020/02/21 17:25:29 by weilin           ###   ########.fr       */
+/*   Updated: 2020/02/21 19:01:28 by weilin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,11 @@ typedef	struct	s_data
 	t_mod		mod;
 }				t_data;
 
+// for testing
+#include <stdio.h>
+void	ft_printf_debug(t_data *info);
+// for testing
+
 int		ft_printf(const char *fmt, ...);
 void	parse(const char *fmt, t_data *t);
 void	init_flag(t_data *t);
@@ -73,7 +78,7 @@ void	print_hash_base(char type, t_data *t);
 void	fillwidth_char(t_data *t);
 void	fillwidth_str(t_data *t);
 void	fillwidth_addr(t_data *t);
-void	fillwidth_addr2(t_data *t);
+// void	fillwidth_addr2(t_data *t);
 
 int		addr_precision(t_data *t);
 char	*ultoa_base(unsigned long int n, unsigned long int base);
