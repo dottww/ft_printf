@@ -6,7 +6,7 @@
 /*   By: weilin <weilin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/15 20:54:00 by weilin            #+#    #+#             */
-/*   Updated: 2020/02/20 21:55:16 by weilin           ###   ########.fr       */
+/*   Updated: 2020/02/21 13:14:07 by weilin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,10 @@ void	parse_flag(const char *fmt, t_data *t)
 		fmt[t->i] == '#' ? t->flag.hash = 1 : 0;
 		fmt[t->i] == ' ' ? t->flag.space = 1 : 0;
 		fmt[t->i] == '*' ? parse_width(t) : 0;
+		(fmt[t->i] == 'l' && fmt[t->i + 1] != 'l') ? t->flag.mod = MOD_l: 0
+		(fmt[t->i] == 'l' && fmt[t->i + 1] == 'l') ? t->flag.mod = MOD_ll: 0
+		(fmt[t->i] == 'h' && fmt[t->i + 1] != 'h') ? t->flag.mod = MOD_h: 0
+		(fmt[t->i] == 'h' && fmt[t->i + 1] == 'h') ? t->flag.mod = MOD_hh: 0
 		//LL size
 		if (fmt[t->i] == '.')
 			parse_prec(fmt, t);

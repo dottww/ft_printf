@@ -6,7 +6,7 @@
 /*   By: weilin <weilin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 16:37:37 by weilin            #+#    #+#             */
-/*   Updated: 2020/02/20 23:05:08 by weilin           ###   ########.fr       */
+/*   Updated: 2020/02/21 13:14:04 by weilin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,14 +36,14 @@ void	ft_printf_debug(t_data *info)
 
 typedef enum	e_mod
 {
-	mod_non = 0,
-	mod_l,
-	mod_ll,
-	mod_h,
-	mod_hh,
-	mod_j,
-	mod_z,
-	mod_L
+	MOD_n = 0, //mod_non = 0,
+	MOD_l,
+	MOD_ll,
+	MOD_h,
+	MOD_hh,
+	//MOD_j,
+	//MOD_z,
+	//MOD_L
 }				t_mod;
 
 typedef	struct	s_flag
@@ -55,6 +55,7 @@ typedef	struct	s_flag
 	int hash;
 	int width;
 	int prec;
+	int mod;
 	// int		neg;
 }				t_flag;
 

@@ -6,7 +6,7 @@
 /*   By: weilin <weilin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/20 17:13:59 by weilin            #+#    #+#             */
-/*   Updated: 2020/02/20 17:40:19 by weilin           ###   ########.fr       */
+/*   Updated: 2020/02/21 13:14:06 by weilin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ void	init_flag(t_data *t)
 	t->flag.hash = 0;
 	t->flag.width = 0;
 	t->flag.prec = -1;
+	t->flag.mod = MOD_n;
 }
 
 void	type_percent(t_data *t)
