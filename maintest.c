@@ -6,7 +6,7 @@
 /*   By: weilin <weilin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/16 19:17:21 by lgaultie          #+#    #+#             */
-/*   Updated: 2020/02/20 22:59:05 by weilin           ###   ########.fr       */
+/*   Updated: 2020/02/21 16:31:39 by weilin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -1631,22 +1631,13 @@ ft_printf("--------------------%%--------------------\n");
 
 void p(void)
 {
-ft_printf("--------------------%%p--------------------\n");			//perfect
+// ft_printf("--------------------%%p--------------------\n");			//perfect
 	int		*tab = malloc(sizeof(int) * 10);
 	int		*tab2 = malloc(0);
-	printf("00) Vrai PRINTF : |%020.0p|\n", "salut");
-	ft_printf("00) Mon PRINTF  : |%020.0p|\n", "salut");
-	printf("00) Vrai PRINTF : |%030.1p|\n", "salut");
-	ft_printf("00) Mon PRINTF  : |%030.1p|\n", "salut");
-	printf("00) Vrai PRINTF : |%+30.1p|\n", "salut");
-	ft_printf("00) Mon PRINTF  : |%+30.1p|\n", "salut");
-	printf("00) Vrai PRINTF : |%3.2p|\n", "salut");
-	ft_printf("00) Mon PRINTF  : |%3.2p|\n", "salut");
-	printf("00) Vrai PRINTF : |%20.2p|\n", "salut");
-	ft_printf("00) Mon PRINTF  : |%20.2p|\n", "salut");
-	printf("01) Vrai PRINTF : |%p|\n", "salut");
-	ft_printf("01) Mon PRINTF  : |%p|\n", "salut");
-/*	printf("02) Vrai PRINTF : |%-p|\n", tab2);
+
+	printf("(p) Vrai PRINTF : |%p|\n", "OK");
+	ft_printf("(p) Mon PRINTF  : |%p|\n", "OK");
+	printf("02) Vrai PRINTF : |%-p|\n", tab2);
 	ft_printf("02) Mon PRINTF  : |%-p|\n", tab2);
 	printf("03) Vrai PRINTF : |%---------p|\n", "test2");
 	ft_printf("03) Mon PRINTF  : |%----------p|\n", "test2");
@@ -1660,19 +1651,13 @@ ft_printf("--------------------%%p--------------------\n");			//perfect
 	ft_printf("07) Mon PRINTF  : |%-2p|\n", tab);
 	printf("11) Vrai PRINTF : |%p|\n", "\0\0\0\0\0");
 	ft_printf("11) Mon PRINTF  : |%p|\n", "\0\0\0\0\0");
-	printf("12) Vrai PRINTF : |%20p|\n", "\0\0\0\0\0");
-	ft_printf("12) Mon PRINTF  : |%20p|\n", "\0\0\0\0\0");
 	printf("13) Vrai PRINTF : |%p|\n", "");
 	ft_printf("13) Mon PRINTF  : |%p|\n", "");
 	printf("14) Vrai PRINTF : |%p|\n", NULL);
 	ft_printf("14) Mon PRINTF  : |%p|\n", NULL);
-	printf("15) Vrai PRINTF : |%10p|\n", NULL);
-	ft_printf("15) Mon PRINTF  : |%10p|\n", NULL);
 	printf("16) Vrai PRINTF : |%-10p|\n", NULL);
 	ft_printf("16) Mon PRINTF  : |%-10p|\n", NULL);
-	free(tab);
-	free(tab2);
-ft_printf("--------------------%%p_NULL--------------------\n");			//perfect	
+	ft_printf("--------------------%%p_NULL--------------------\n");			//perfect	
 	printf("%p\n","\0");
 	ft_printf("%p\n","\0");
 	printf("%p\n","/0");
@@ -1681,10 +1666,61 @@ ft_printf("--------------------%%p_NULL--------------------\n");			//perfect
 	ft_printf("%p\n","");
 	printf("%p\n",NULL);
 	ft_printf("%p\n",NULL);
+
+	printf("(+30.1p) Vrai PRINTF : |%+30.1p|\n", "K");//no
+	ft_printf("(+30.1p) Mon PRINTF  : |%+30.1p|\n", "K");//no	
+	
+	printf("(20.2p) Vrai PRINTF : |%20.2p|\n", "OK");
+	ft_printf("(20.2p) Mon PRINTF  : |%20.2p|\n", "OK");
+
+	printf("(-020.p) Vrai PRINTF : |%-020.p|\n", "K");
+	ft_printf("(-020.p) Mon PRINTF  : |%-020.p|\n", "K");
+	printf("(-020.0p) Vrai PRINTF : |%-020.0p|\n", "K");
+	ft_printf("(-020.0p) Mon PRINTF  : |%-020.0p|\n", "K");
+	printf("(020.p) Vrai PRINTF : |%020.p|\n", "ER");
+	ft_printf("(020.p) Mon PRINTF  : |%020.p|\n", "ER");
+	printf("(020.0p) Vrai PRINTF : |%020.0p|\n", "ER");
+	ft_printf("(020.0p) Mon PRINTF  : |%020.0p|\n", "ER");
+	printf("(030.1p) Vrai PRINTF : |%030.1p|\n", "ER");
+	ft_printf("(030.1p) Mon PRINTF  : |%030.1p|\n", "ER");
+	printf("(3.2p) Vrai PRINTF : |%3.2p|\n", "OK");
+	ft_printf("(3.2p) Mon PRINTF  : |%3.2p|\n", "OK");
+
+
+	printf("( 30.1p) Vrai PRINTF : |% 30.1p|\n", "K");//no
+	ft_printf("( 30.1p) Mon PRINTF  : |% 30.1p|\n", "K");//no	
+	
+	printf("( 20.2p) Vrai PRINTF : |% 20.2p|\n", "OK");
+	ft_printf("( 20.2p) Mon PRINTF  : |% 20.2p|\n", "OK");
+
+	printf("(- 020.p) Vrai PRINTF : |%- 020.p|\n", "K");
+	ft_printf("(-0 20.p) Mon PRINTF  : |%- 020.p|\n", "K");
+	printf("(-#020.0p) Vrai PRINTF : |%-#020.0p|\n", "K");
+	ft_printf("(-#020.0p) Mon PRINTF  : |%-#020.0p|\n", "K");
+	printf("(020.100p) Vrai PRINTF : |%020.100p|\n", "ER");
+	ft_printf("(020.100p) Mon PRINTF  : |%020.100p|\n", "ER");
+	printf("(020.0p) Vrai PRINTF : |%020.0p|\n", "ER");
+	ft_printf("(020.0p) Mon PRINTF  : |%020.0p|\n", "ER");
+	printf("(030.1p) Vrai PRINTF : |%030.1p|\n", "ER");
+	ft_printf("(030.1p) Mon PRINTF  : |%030.1p|\n", "ER");
+	printf("(3.2p) Vrai PRINTF : |%3.2p|\n", "OK");
+	ft_printf("(3.2p) Mon PRINTF  : |%3.2p|\n", "OK");
+
+
+	printf("12) Vrai PRINTF : |%20p|\n", "\0\0\0\0\0");
+	ft_printf("12) Mon PRINTF  : |%20p|\n", "\0\0\0\0\0");
+	
+	printf("15) Vrai PRINTF : |%10p|\n", NULL);
+	ft_printf("15) Mon PRINTF  : |%10p|\n", NULL);
+
+	free(tab);
+	free(tab2);
+
+	
 // ft_printf("--------------------%%p-special char-------------------\n");			//perfect
 	// printf("test %-7C %007d%-10.2ls!!\n", 0xd777, 0x45, "L〻");
 	// ft_printf("test %-7C %007d%-10.2ls!!\n", 0xd777, 0x45, "L〻");
-*/
+
 
 }
 
@@ -1802,11 +1838,13 @@ ft_printf("--------------------%%c--------------------\n");		//Perfect
 	printf("%c\n",(char)564);
 	ft_printf("%c\n",(char)564);
 }
+
 int		main(void)
 {
 	// c();
 	// s();
-	
+	// ft_printf("YES\n");
+	// ft_printf("NO\n");
 	// percent();
 	p();
 	

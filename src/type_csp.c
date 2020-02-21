@@ -6,7 +6,7 @@
 /*   By: weilin <weilin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/20 17:42:55 by weilin            #+#    #+#             */
-/*   Updated: 2020/02/20 20:48:46 by weilin           ###   ########.fr       */
+/*   Updated: 2020/02/21 16:31:48 by weilin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,10 +42,10 @@ void	type_addr(t_data *t)
 
 	t->flag.minus == 1 ? t->flag.zero = 0 : 0;
 	val = va_arg(t->valist, unsigned long int);
-	if (t->flag.prec == 0)
-		t->bf = ft_strdup("\0");
-	else
-		t->bf = ultoa_base(val, 16);
+	// if (t->flag.prec == 0)
+	// 	t->bf = ft_strdup("\0");
+	// else
+	t->bf = ultoa_base(val, 16);
 	if (!t->bf)
 		return ;
 	// ft_strtolower(t->bf);
