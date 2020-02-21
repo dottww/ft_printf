@@ -6,7 +6,7 @@
 /*   By: weilin <weilin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/16 19:17:21 by lgaultie          #+#    #+#             */
-/*   Updated: 2020/02/21 16:31:39 by weilin           ###   ########.fr       */
+/*   Updated: 2020/02/21 17:27:48 by weilin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,24 @@
 #include <limits.h>
 #include <float.h>
 #include "include/ft_printf.h"
+
+#include <stdio.h>
+void	ft_printf_debug(t_data *info)
+{
+	printf("----------------DEBUG-------------\n");
+	printf("-------------struct info----------\n");
+	printf("info plus:			%d\n", info->flag.plus);
+	printf("info minus:			%d\n", info->flag.minus);
+	printf("info zero:			%d\n", info->flag.zero);
+	printf("info space:			%d\n", info->flag.space);
+	printf("info hash:			%d\n", info->flag.hash);
+	printf("info width:			%d\n", info->flag.width);
+	printf("info precision:			%d\n", info->flag.prec);
+	printf("info i:				%d\n", info->i);
+	printf("info str:			%s\n", info->bf);
+	printf("info len:			%c\n", info->len);
+	printf("----------------------------------\n");
+}
 // #include "libft.h"
 
 //leak de %-----s corrigé en mettant un free dans ft_minus....
@@ -1651,10 +1669,18 @@ void p(void)
 	ft_printf("07) Mon PRINTF  : |%-2p|\n", tab);
 	printf("11) Vrai PRINTF : |%p|\n", "\0\0\0\0\0");
 	ft_printf("11) Mon PRINTF  : |%p|\n", "\0\0\0\0\0");
+
+	printf("12) Vrai PRINTF : |%20p|\n", "\0\0\0\0\0");
+	ft_printf("12) Mon PRINTF  : |%20p|\n", "\0\0\0\0\0");
+	
+
 	printf("13) Vrai PRINTF : |%p|\n", "");
 	ft_printf("13) Mon PRINTF  : |%p|\n", "");
 	printf("14) Vrai PRINTF : |%p|\n", NULL);
 	ft_printf("14) Mon PRINTF  : |%p|\n", NULL);
+	printf("15) Vrai PRINTF : |%10p|\n", NULL);
+	ft_printf("15) Mon PRINTF  : |%10p|\n", NULL);
+
 	printf("16) Vrai PRINTF : |%-10p|\n", NULL);
 	ft_printf("16) Mon PRINTF  : |%-10p|\n", NULL);
 	ft_printf("--------------------%%p_NULL--------------------\n");			//perfect	
@@ -1667,8 +1693,8 @@ void p(void)
 	printf("%p\n",NULL);
 	ft_printf("%p\n",NULL);
 
-	printf("(+30.1p) Vrai PRINTF : |%+30.1p|\n", "K");//no
-	ft_printf("(+30.1p) Mon PRINTF  : |%+30.1p|\n", "K");//no	
+	printf("(+30.1p) Vrai PRINTF : |%+30.1p|\n", "K");
+	ft_printf("(+30.1p) Mon PRINTF  : |%+30.1p|\n", "K");
 	
 	printf("(20.2p) Vrai PRINTF : |%20.2p|\n", "OK");
 	ft_printf("(20.2p) Mon PRINTF  : |%20.2p|\n", "OK");
@@ -1686,9 +1712,8 @@ void p(void)
 	printf("(3.2p) Vrai PRINTF : |%3.2p|\n", "OK");
 	ft_printf("(3.2p) Mon PRINTF  : |%3.2p|\n", "OK");
 
-
-	printf("( 30.1p) Vrai PRINTF : |% 30.1p|\n", "K");//no
-	ft_printf("( 30.1p) Mon PRINTF  : |% 30.1p|\n", "K");//no	
+	printf("( 30.1p) Vrai PRINTF : |% 30.1p|\n", "K");
+	ft_printf("( 30.1p) Mon PRINTF  : |% 30.1p|\n", "K");
 	
 	printf("( 20.2p) Vrai PRINTF : |% 20.2p|\n", "OK");
 	ft_printf("( 20.2p) Mon PRINTF  : |% 20.2p|\n", "OK");
@@ -1697,8 +1722,6 @@ void p(void)
 	ft_printf("(-0 20.p) Mon PRINTF  : |%- 020.p|\n", "K");
 	printf("(-#020.0p) Vrai PRINTF : |%-#020.0p|\n", "K");
 	ft_printf("(-#020.0p) Mon PRINTF  : |%-#020.0p|\n", "K");
-	printf("(020.100p) Vrai PRINTF : |%020.100p|\n", "ER");
-	ft_printf("(020.100p) Mon PRINTF  : |%020.100p|\n", "ER");
 	printf("(020.0p) Vrai PRINTF : |%020.0p|\n", "ER");
 	ft_printf("(020.0p) Mon PRINTF  : |%020.0p|\n", "ER");
 	printf("(030.1p) Vrai PRINTF : |%030.1p|\n", "ER");
@@ -1707,12 +1730,34 @@ void p(void)
 	ft_printf("(3.2p) Mon PRINTF  : |%3.2p|\n", "OK");
 
 
-	printf("12) Vrai PRINTF : |%20p|\n", "\0\0\0\0\0");
-	ft_printf("12) Mon PRINTF  : |%20p|\n", "\0\0\0\0\0");
-	
-	printf("15) Vrai PRINTF : |%10p|\n", NULL);
-	ft_printf("15) Mon PRINTF  : |%10p|\n", NULL);
+	printf("(--20.-42p) Vrai PRINTF : |%--20.-42p|\n", "ER");
+	ft_printf("(--20.-42p) Mon PRINTF  : |%--20.-42p|\n", "ER");
+	printf("(020.-42p) Vrai PRINTF : |%020.-42p|\n", "ER");
+	ft_printf("(020.-42p) Mon PRINTF  : |%020.-42p|\n", "ER");
+	printf("(020.- 42p) Vrai PRINTF : |%020.- 42p|\n", "ER");
+	ft_printf("(020.- 42p) Mon PRINTF  : |%020.- 42p|\n", "ER");
+	printf("(020.-3p) Vrai PRINTF : |%020.-3p|\n", "ER");
+	ft_printf("(020.-3p) Mon PRINTF  : |%020.-3p|\n", "ER");
+	printf("(020.p) Vrai PRINTF : |%020.p|\n", "ER");
+	ft_printf("(020.p) Mon PRINTF  : |%020.p|\n", "ER");
+	printf("(020.0p) Vrai PRINTF : |%020.0p|\n", "ER");
+	ft_printf("(020.0p) Mon PRINTF  : |%020.0p|\n", "ER");
+	printf("(015.3p) Vrai PRINTF : |%015.3p|\n", "ER");
+	ft_printf("(015.3p) Mon PRINTF  : |%015.3p|\n", "ER");
+	printf("(015.15p) Vrai PRINTF : |%015.15p|\n", "ER");
+	ft_printf("(015.15p) Mon PRINTF  : |%015.15p|\n", "ER");
+	printf("(015.16p) Vrai PRINTF : |%015.16p|\n", "ER");
+	ft_printf("(015.16p) Mon PRINTF  : |%015.16p|\n", "ER");
 
+	printf("(--15.-16p) Vrai PRINTF : |%--15.-16p|\n", "ER");
+	ft_printf("(--15.-16p) Mon PRINTF  : |%--15.-16p|\n", "ER");
+	printf("(015.20p) Vrai PRINTF : |%015.20p|\n", "ER");
+	ft_printf("(015.20p) Mon PRINTF  : |%015.20p|\n", "ER");
+	printf("(025.42p) Vrai PRINTF : |%025.42p|\n", "ER");
+	ft_printf("(025.42p) Mon PRINTF  : |%025.42p|\n", "ER");
+	
+	printf("(--15.16p) Vrai PRINTF : |%--15.16p|\n", "ER");
+	ft_printf("(--15.16p) Mon PRINTF  : |%--15.16p|\n", "ER");
 	free(tab);
 	free(tab2);
 

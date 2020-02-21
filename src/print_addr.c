@@ -6,7 +6,7 @@
 /*   By: weilin <weilin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/20 17:40:43 by weilin            #+#    #+#             */
-/*   Updated: 2020/02/21 16:32:14 by weilin           ###   ########.fr       */
+/*   Updated: 2020/02/21 17:27:04 by weilin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,20 @@ void	fillwidth_addr(t_data *t)
 	while (i > 0)
 	{
 		t->nb_print += write(t->fd, " ", 1);
+		i--;
+	}
+}
+
+void	fillwidth_addr2(t_data *t)
+{
+	int len;
+	int i;
+
+	len = ft_strlen(t->bf);
+	i = t->flag.prec - len;
+	while (i > 0)
+	{
+		t->nb_print += write(t->fd, "0", 1);
 		i--;
 	}
 }
@@ -96,7 +110,14 @@ void	print_addr(t_data *t)
 	// addr_precision(t);
 	// if (!(addr_precision(t)))
 	// 	return ;
-	if (t->flag.minus == 1)
+	// ft_printf_debug(t);
+	if (t->flag.prec >= t->flag.width)
+	{
+		print_hash_base('x', t);
+		fillwidth_addr2(t);
+		t->nb_print += write(t->fd, t->bf, ft_strlen(t->bf));
+	}
+	else if (t->flag.minus == 1)
 	{
 		print_hash_base('x', t);
 		t->nb_print += write(t->fd, t->bf, ft_strlen(t->bf));

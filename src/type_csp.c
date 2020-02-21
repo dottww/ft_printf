@@ -6,7 +6,7 @@
 /*   By: weilin <weilin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/20 17:42:55 by weilin            #+#    #+#             */
-/*   Updated: 2020/02/21 16:31:48 by weilin           ###   ########.fr       */
+/*   Updated: 2020/02/21 17:33:15 by weilin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,27 @@ void	type_chars(char type, t_data *t)
 			return ;	
 		print_str(t);
 	}
+}
+
+void	type_percent(t_data *t)
+{
+	int tmp;
+	
+	tmp = t->flag.width;
+	if (t->flag.minus == 1)
+	{
+		t->nb_print += write(t->fd, "%", 1);
+		while (tmp-- > 1)
+			t->nb_print += write(t->fd, " ", 1);
+	}
+	else
+	{
+		while (tmp-- > 1)
+			t->nb_print += (t->flag.zero ?
+					write(t->fd, "0", 1) : write(t->fd, " ", 1));
+		t->nb_print += write(t->fd, "%", 1);
+	}
+	t->i++;
 }
 
 void	type_addr(t_data *t)
