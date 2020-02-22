@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: weilin <weilin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mdavid <mdavid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 16:37:37 by weilin            #+#    #+#             */
-/*   Updated: 2020/02/21 19:01:28 by weilin           ###   ########.fr       */
+/*   Updated: 2020/02/22 18:54:51 by mdavid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,12 @@
 # include "libft.h"
 # include <stdarg.h>
 # include <limits.h>
+
+typedef enum	e_stat
+{
+	STAT_OK,
+	STAT_ERR
+}				t_stat;
 
 typedef enum	e_mod
 {
@@ -70,7 +76,6 @@ void	parse_type(const char *fmt, t_data *t);
 void	type_chars(char type, t_data *t);
 void	type_addr(t_data *t);
 void	type_percent(t_data *t);
-void	type_int(t_data *t);
 void	print_char(t_data *t, unsigned char ch);
 void	print_str(t_data *t);
 void	print_addr(t_data *t);
@@ -82,6 +87,11 @@ void	fillwidth_addr(t_data *t);
 
 int		addr_precision(t_data *t);
 char	*ultoa_base(unsigned long int n, unsigned long int base);
+
+void	type_int(t_data *t);
+int		ft_flag_width_for_int(t_data *t, char **val, int len);
+char	ft_flag_zero_for_int(t_data *t);
+int		ft_flag_plus_for_int(t_data *t, char **val, int neg);
 
 #endif
 

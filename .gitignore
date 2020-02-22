@@ -8,3 +8,6 @@
 *.a
 tmp/*
 /tmp
+.vscode/
+.vscode/*
+/.vscode
