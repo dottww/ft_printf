@@ -6,7 +6,7 @@
 /*   By: weilin <weilin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/16 19:17:21 by lgaultie          #+#    #+#             */
-/*   Updated: 2020/02/22 18:41:48 by weilin           ###   ########.fr       */
+/*   Updated: 2020/02/22 18:57:55 by weilin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -1889,21 +1889,59 @@ int		main(void)
 	// ft_printf("NO\n");
 	// percent();
 	// p();
-	printf("int			:%d\n", INT_MAX);
-	printf("int			:%d\n", INT_MIN);
-	printf("unsigned int		:%u\n", UINT_MAX);
+	printf("%%d == %%i: Signed int\n");
+	printf("INT_MAX			:%d\n", INT_MAX);
+	printf("INT_MIN			:%d\n", INT_MIN);
+	printf("UINT_MAX		:%d (out of range)\n", UINT_MAX);
+	printf("\n");
 
-	printf("%%lu: long & unsigned long\n");
+	printf("%%i == %%d: Signed int\n");
+	printf("INT_MAX			:%i\n", INT_MAX);
+	printf("INT_MIN			:%i\n", INT_MIN);
+	printf("UINT_MAX		:%i (out of range)\n", UINT_MAX);
+	printf("\n");
 	
-	printf("LONG_MAX 	:%lu\n", LONG_MAX);
-	printf("LONG_MIN 	:%lu\n", LONG_MIN);
-	printf("ULONG_MAX  	:%lu\n", ULONG_MAX);
+	printf("%%u: unsigned int\n");
+	printf("INT_MAX			:%u\n", INT_MAX);
+	printf("INT_MIN			:%u (minus disappeared)\n", INT_MIN);
+	printf("UINT_MAX		:%u\n", UINT_MAX);
+	printf("\n");
+	
+	printf("%%ld == %%li: Signed long\n");
+	printf("LONG_MAX 	:%ld\n", LONG_MAX);
+	printf("LONG_MIN 	:%ld\n", LONG_MIN);
+	printf("ULONG_MAX  	:%ld (out of range)\n", ULONG_MAX);
+	printf("\n");
 
-	printf("%%lld: long long & unsigned long long\n");
-	printf("           (lld, LLONG_MAX)	:%lld\n", LLONG_MAX);
-	printf("           (lld, LLONG_MIN)	:%lld\n", LLONG_MIN);
-	printf("(lld, ULLONG_MAX)	:%lld\n", ULLONG_MAX);
+	printf("%%li == %%ld: Signed long\n");
+	printf("LONG_MAX 	:%li\n", LONG_MAX);
+	printf("LONG_MIN 	:%li\n", LONG_MIN);
+	printf("ULONG_MAX  	:%li (out of range)\n", ULONG_MAX);
+	printf("\n");
+
+	printf("%%lu: unsigned long\n");
+	printf("LONG_MAX 	:%lu\n", LONG_MAX);
+	printf("LONG_MIN 	:%lu (minus disappeared)\n", LONG_MIN);
+	printf("ULONG_MAX  	:%lu\n", ULONG_MAX);
+	printf("\n");
+
+	printf("%%lld == %%lli: signed long long\n");
+	printf("(lld, LLONG_MAX)	:%lld\n", LLONG_MAX);
+	printf("(lld, LLONG_MIN)	:%lld\n", LLONG_MIN);
+	printf("(lld, ULLONG_MAX)	:%lld (out of range)\n", ULLONG_MAX);
+	printf("\n");
+
+	printf("%%lli == %%lld: signed long long\n");
+	printf("(lli, LLONG_MAX)	:%lli\n", LLONG_MAX);
+	printf("(lli, LLONG_MIN)	:%lli\n", LLONG_MIN);
+	printf("(lli, ULLONG_MAX)	:%lli (out of range)\n", ULLONG_MAX);
+	printf("\n");
+	
+	printf("%%llu: unsigned long long\n");
+	printf("(llu, LLONG_MAX)	:%llu\n", LLONG_MAX);
+	printf("(llu, LLONG_MIN)	:%llu (minus disappeared)\n", LLONG_MIN);
 	printf("(llu, ULLONG_MAX)	:%llu\n", ULLONG_MAX);
+	printf("\n");
 	
 	// %
 	// printf("titi.%-0004%.\n");
