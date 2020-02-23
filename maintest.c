@@ -6,7 +6,7 @@
 /*   By: weilin <weilin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/16 19:17:21 by lgaultie          #+#    #+#             */
-/*   Updated: 2020/02/22 18:57:55 by weilin           ###   ########.fr       */
+/*   Updated: 2020/02/23 20:44:47 by weilin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,9 @@
 
 void x(void)
 {
-ft_printf("--------------------%%x--------------------\n");		//29/29
+ft_printf("--------------------%%x--------------------\n");
+	printf("0.1) Vrai PRINTF : |%#08x|\n", 42);
+	ft_printf("0.1) Mon PRINTF  : |%#08x|\n", 42);
 	printf("01) Vrai PRINTF : |%x|\n", 34);
 	ft_printf("01) Mon PRINTF  : |%x|\n", 34);
 	printf("02) Vrai PRINTF : |%x|\n", -34);
@@ -34,6 +36,8 @@ ft_printf("--------------------%%x--------------------\n");		//29/29
 	ft_printf("04) Mon PRINTF  : |%10x|\n", 90);
 	printf("05) Vrai PRINTF : |%.10x|\n", 90);
 	ft_printf("05) Mon PRINTF  : |%.10x|\n", 90);
+	printf("05.2) Vrai PRINTF : |%#.10x|\n", 90);
+	ft_printf("05.2) Mon PRINTF  : |%#.10x|\n", 90);
 	printf("06) Vrai PRINTF : |%15x|\n", -100);
 	ft_printf("06) Mon PRINTF  : |%15x|\n", -100);
 	printf("07) Vrai PRINTF : |%.15x|\n", -100);
@@ -62,18 +66,26 @@ ft_printf("--------------------%%x--------------------\n");		//29/29
 	ft_printf("18) Mon PRINTF  : |%#.5x|\n", 34);
 	printf("19) Vrai PRINTF : |%#5x|\n", 86);
 	ft_printf("19) Mon PRINTF  : |%#5x|\n", 86);
+
 	printf("20) Vrai PRINTF : |%#10.5x|\n", 70);
 	ft_printf("20) Mon PRINTF  : |%#10.5x|\n", 70);
+
+	printf("21.0) Vrai PRINTF : |%#10x|\n", 0);
+	ft_printf("21.0) Mon PRINTF  : |%#10x|\n", 0);
+
 	printf("21) Vrai PRINTF : |%#x|\n", 0);
 	ft_printf("21) Mon PRINTF  : |%#x|\n", 0);
+
 	printf("22) Vrai PRINTF : |%#.x|\n", 0);
 	ft_printf("22) Mon PRINTF  : |%#.x|\n", 0);
 	printf("23) Vrai PRINTF : |%.x|\n", 0);
 	ft_printf("23) Mon PRINTF  : |%.x|\n", 0);
+	
 	printf("24) Vrai PRINTF : |%.x|\n", 88);
 	ft_printf("24) Mon PRINTF  : |%.x|\n", 88);
 	printf("25) Vrai PRINTF : |%#.x|\n", 88);
 	ft_printf("25) Mon PRINTF  : |%#.x|\n", 88);
+
 	printf("26) Vrai PRINTF : |%x|\n", UINT_MAX);
 	ft_printf("26) Mon PRINT   : |%x|\n", UINT_MAX);
 	printf("27) Vrai PRINTF : |%#x|\n", UINT_MAX);
@@ -81,7 +93,7 @@ ft_printf("--------------------%%x--------------------\n");		//29/29
 	printf("28) Vrai PRINTF : |%#x| |%#x|\n", (unsigned int)-1, UINT_MAX + 1);
 	ft_printf("28) Mon PRINTF  : |%#x| |%#x|\n", (unsigned int)-1, UINT_MAX + 1);
 	printf("29) Vrai PRINTF : |%x| |%x|\n", (unsigned int)-1, UINT_MAX + 1);
-	ft_printf("29) Mon PRINTF  : |%x| |%x|\n", (unsigned int)-1, UINT_MAX + 1);
+	ft_printf("29) Mon PRINTF  : |%x| |%x|\n", (unsigned int)-1, UINT_MAX + 1);	
 ft_printf("--------------------%%hx--------------------\n");
 	printf("01) Vrai PRINTF : |%hx|\n", (unsigned short)34);
 	ft_printf("01) Mon PRINTF  : |%hx|\n", (unsigned short)34);
@@ -1634,7 +1646,16 @@ void f(void)
 	ft_printf("12) Mon PRINTF	: |%1f|\n", 243.59);
 }
 void percent(void)
-{ft_printf("--------------------%%--------------------\n");	
+{
+	// ft_printf("--------------------%%--------------------\n");	
+	printf("%-03%.%%.\n");
+	ft_printf("%-03%.%%.\n");
+	printf("%03%.%%.\n");
+	ft_printf("%03%.%%.\n");
+	printf("%-%%%\n");
+	ft_printf("%-%%%\n");
+	printf("%%%%%%\n");
+	ft_printf("%%%%%%\n");
 	printf("PLUS%+%\n");
 	ft_printf("PLUS%+%\n");
 	printf("titi.% +---3.5%.et%%%-0004%.et.%+1%\n");
@@ -1645,11 +1666,16 @@ void percent(void)
 	ft_printf("titi.% 0+3.5%.et%%%-0004%.et.%+1%\n");
 	printf("titi.%0+3.5%.et%%%-0004%.et.%+1%\n");
 	ft_printf("titi.%0+3.5%.et%%%-0004%.et.%+1%\n");
+	// %
+	// printf("titi.%-0004%.\n");
+	// ft_printf("titi.%-0004%.\n");
+	// ft_printf("%x", i);
 }
-/*
+
+
 void p(void)
 {
-// ft_printf("--------------------%%p--------------------\n");			//perfect
+	// ft_printf("--------------------%%p--------------------\n");			//perfect
 	int		*tab = malloc(sizeof(int) * 10);
 	int		*tab2 = malloc(0);
 
@@ -1688,7 +1714,7 @@ ft_printf("--------------------%%p_NULL--------------------\n");			//perfect
 	ft_printf("15) Mon PRINTF  : |%10p|\n", NULL);
 	printf("16) Vrai PRINTF : |%-10p|\n", NULL);
 	ft_printf("16) Mon PRINTF  : |%-10p|\n", NULL);
-
+/*
 	printf("(+30.1p) Vrai PRINTF : |%+30.1p|\n", "K");
 	ft_printf("(+30.1p) Mon PRINTF  : |%+30.1p|\n", "K");
 	printf("(20.2p) Vrai PRINTF : |%20.2p|\n", "OK");
@@ -1755,6 +1781,8 @@ ft_printf("--------------------%%p_NULL--------------------\n");			//perfect
 	ft_printf("(20.16p) Mon PRINTF  : |%20.16p|\n", "ER");
 	printf("(-30.16p) Vrai PRINTF : |%-30.16p|\n", "ER");
 	ft_printf("(-30.16p) Mon PRINTF  : |%-30.16p|\n", "ER");
+
+*/
 	free(tab);
 	free(tab2);
 
@@ -1765,10 +1793,12 @@ ft_printf("--------------------%%p_NULL--------------------\n");			//perfect
 
 
 }
-*/
+
 void s(void)
 {
 ft_printf("--------------------%%s--------------------\n");			//Perfect
+	//width
+	printf("%.2s",NULL);// (null)
 	printf("01) Vrai PRINTF : |%.2s|\n", "salut");
 	ft_printf("01) Mon PRINTF  : |%s|\n", "salut");
 	printf("02) Vrai PRINTF : |%-s|\n", "test");
@@ -1881,14 +1911,39 @@ ft_printf("--------------------%%c--------------------\n");		//Perfect
 	ft_printf("%c\n",(char)564);
 }
 
-int		main(void)
+void limit(void)
 {
-	// c();
-	// s();
-	// ft_printf("YES\n");
-	// ft_printf("NO\n");
-	// percent();
-	// p();
+// printf("ptf:s=%s\n","1");
+	// printf("ptf:p=%p\n","1");
+	// printf("ptf:lu=%lu\n",(unsigned long)"1");
+	// printf("ptf:s=%s",ultoa_base((unsigned long)"1",16));
+	
+	// printf("sizeof char = %d",(int)sizeof(char));
+
+	// limit();
+	// printf("SCHAR_MAX		:%hhd\n", (char)SCHAR_MAX);
+	// printf("SCHAR_MIN		:%hhd\n", (char)SCHAR_MIN);
+	// printf("UCHAR_MAX		:%hhd\n", (unsigned char)UCHAR_MAX);
+	// printf("UCHAR_MAX		:%hhu\n", (unsigned char)UCHAR_MAX);
+	/*
+	printf("Short int printed by %%d == %%i: Signed int\n");
+	printf("SHRT_MAX		:%hd\n", (short)SHRT_MAX);
+	printf("SHRT_MIN		:%hd\n", (short)SHRT_MIN);
+	printf("USHRT_MAX		:%d\n", (short)USHRT_MAX);
+	printf("USHRT_MAX		:%hd\n", USHRT_MAX);
+	
+	printf("USHRT_MAX		:%d\n", USHRT_MAX);
+	printf("USHRT_MAX		:%d\n", (unsigned short)USHRT_MAX);
+	printf("\n");
+	*/
+	// printf("unsigned char printed by %%d == %%i: Signed int\n");
+	// printf("SHRT_MAX		:%hd\n", SHRT_MAX);
+	// printf("SHRT_MIN		:%hd\n", SHRT_MIN);
+	// printf("USHRT_MAX		:%hd\n", USHRT_MAX);
+	// printf("\n");
+	
+	
+/*
 	printf("%%d == %%i: Signed int\n");
 	printf("INT_MAX			:%d\n", INT_MAX);
 	printf("INT_MIN			:%d\n", INT_MIN);
@@ -1942,24 +1997,56 @@ int		main(void)
 	printf("(llu, LLONG_MIN)	:%llu (minus disappeared)\n", LLONG_MIN);
 	printf("(llu, ULLONG_MAX)	:%llu\n", ULLONG_MAX);
 	printf("\n");
+*/	
+}
+
+#define TEST(FMT,...)													\
+	printf("Vrai PRINTF ");pf = printf(FMT,##__VA_ARGS__);						\
+	ft_printf(" Mon PRINTF ");ft = ft_printf(FMT,##__VA_ARGS__);					\
+	if (ft != pf)														\
+	{	dprintf(2, "Fail : return value Real(%i vs %i)Yours\n", pf, ft);\
+		return(0);}
+
+int		main(void)
+{
+	// c();
+	// s();
+	// ft_printf("YES\n");
+	// ft_printf("NO\n");
+	// percent();
+	// p();
+	// x();
+	printf("0.1) Vrai PRINTF : |%#08x|\n", 42);
+	ft_printf("0.1) Mon PRINTF  : |%#08x|\n", 42);
+	ft_printf("@moulitest: %5.x %5.0x", 0, 0);
 	
-	// %
-	// printf("titi.%-0004%.\n");
-	// ft_printf("titi.%-0004%.\n");
-	// ft_printf("%x", i);
-	//width
-	// printf("%.2s",NULL);// (null)
-	//segmentation fault
-	// printf("%s",42); 
-	// int i=32;
+	// X();
+
+
+
+	// int		pf;
+	// int		ft;
+	
+	// TEST("1) Vrai PRINTF : |%0.x|\n", 30004);
+	// TEST("2) Vrai PRINTF : |%0.0x|\n", 30004);
+	// TEST("3) Vrai PRINTF : |%010.x|\n", 30004);
+	// TEST("4) Vrai PRINTF : |%#10x|\n", 30004);
+	// TEST("5) : |%-+#10x|\n", 0);
+	// TEST("6) : |%-+#10X|\n", 30004);
+	// TEST("7) : |% 10x|\n", 30004);
+	
+// int i=32;
 	// while (i>-32)
 	// {
 	// 	ft_printf("%x", i);
 	// 	ft_printf("\n");
 	// 	i--;
 	// }
-	// ft_printf("%c can it print?",'t');
-	// rest();
-	// rest2();
+
+	//segmentation fault
+	// printf("%s",42); 
+	
+
+
 	return (0);
 }
