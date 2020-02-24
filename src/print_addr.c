@@ -6,7 +6,7 @@
 /*   By: weilin <weilin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/20 17:40:43 by weilin            #+#    #+#             */
-/*   Updated: 2020/02/21 18:34:36 by weilin           ###   ########.fr       */
+/*   Updated: 2020/02/24 01:33:02 by weilin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ void	fillwidth_addr2(t_data *t)
 	}
 }
 */
-void	print_hash_base(char type, t_data *t)
+void	print_hash(char type, t_data *t)
 {
 	if (type == 'o' && t->bf[0] != '0')
 		t->nb_print += write(t->fd, "0", 1);
@@ -72,35 +72,6 @@ int		addr_precision(t_data *t)
 	return (1);
 }
 
-
-char	*ultoa_base(unsigned long int n, unsigned long int base)
-{
-	char				*s;
-	int					len;
-	unsigned long int	tmp;
-
-	len = 1;
-	tmp = n;
-	while (tmp >= base)
-	{
-		tmp /= base;
-		len++;
-	}
-	if (!(s = ft_strnew(len)))
-		return (NULL);
-	s[len] = '\0';
-	tmp = n;
-	while (tmp >= base)
-	{
-		s[--len] = (tmp % base) > 9 ?
-			(tmp % base) + 87 : (tmp % base) + '0';
-		tmp /= base;
-	}
-	s[--len] = (tmp % base) > 9 ?
-		(tmp % base) + 87 : (tmp % base) + '0';
-	return (s);
-}
-
 void	print_addr(t_data *t)
 {
 	// t->flag.space = 0;
@@ -111,23 +82,23 @@ void	print_addr(t_data *t)
 		return ;
 	// if (t->flag.prec >= 0)
 	// {
-	// 	print_hash_base('x', t);
+	// 	print_hash('x', t);
 	// 	fillwidth_addr2(t);
 	// 	t->nb_print += write(t->fd, t->bf, ft_strlen(t->bf));
 	// 	fillwidth_addr(t);
 	// }
 	if (t->flag.minus == 1)
 	{
-		print_hash_base('x', t);
+		print_hash('x', t);
 		t->nb_print += write(t->fd, t->bf, ft_strlen(t->bf));
 		fillwidth_addr(t);
 	}
 	else
 	{
 		fillwidth_addr(t);
-		print_hash_base('x', t);
+		print_hash('x', t);
 		t->nb_print += write(t->fd, t->bf, ft_strlen(t->bf));
 	}
-	t->i++;
 	free(t->bf);
+	t->i++;
 }
