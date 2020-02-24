@@ -6,7 +6,7 @@
 /*   By: weilin <weilin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/20 17:40:43 by weilin            #+#    #+#             */
-/*   Updated: 2020/02/23 14:14:18 by weilin           ###   ########.fr       */
+/*   Updated: 2020/02/24 01:33:02 by weilin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,6 +99,6 @@ void	print_addr(t_data *t)
 		print_hash('x', t);
 		t->nb_print += write(t->fd, t->bf, ft_strlen(t->bf));
 	}
-	t->i++;
 	free(t->bf);
+	t->i++;
 }

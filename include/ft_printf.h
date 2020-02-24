@@ -6,7 +6,7 @@
 /*   By: weilin <weilin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 16:37:37 by weilin            #+#    #+#             */
-/*   Updated: 2020/02/23 20:42:21 by weilin           ###   ########.fr       */
+/*   Updated: 2020/02/24 01:22:37 by weilin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,15 +80,18 @@ void	print_base(char type, t_data *t, int n);
 void	fillwidth_char(t_data *t);
 void	fillwidth_str(t_data *t);
 void	fillwidth_addr(t_data *t);
+void	fillwidth_base(t_data *t, int n);
 // void	fillwidth_addr2(t_data *t);
 
 void	init_flag(t_data *t);
 void	init_uint_arg(char type, t_data *t, unsigned long *val);
 int		addr_precision(t_data *t);
+// int		base_precision(t_data *t);
 int		base_hash(char tp, t_data *t);
 int		base_width(char tp, t_data *t);
 
 void	conv_hexa(t_data *t, unsigned long val);
+void	conv_octal(t_data *t, unsigned long val);
 char	*ft_ulltoa(unsigned long long n);
 char	*ft_uitoa_base(unsigned int n, unsigned int base);
 char	*ft_ultoa_base(unsigned long n, unsigned long base);
