@@ -6,13 +6,13 @@
 #    By: weilin <weilin@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/01/11 16:48:33 by weilin            #+#    #+#              #
-#    Updated: 2020/02/24 15:56:28 by weilin           ###   ########.fr        #
+#    Updated: 2020/02/24 18:59:12 by weilin           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = libftprintf.a
 
-LIB_FOLDER = libft/
+LIB_DIR = libft/
 LIB_FILES = ft_atoi ft_strlen ft_bzero ft_isdigit ft_strchr ft_int_len \
 			ft_strdup ft_strsub ft_strtolower ft_strjoin ft_strnew ft_strcat \
 			ft_strcpy ft_itoa ft_strnew_c ft_strdel ft_memalloc ft_strjoin \
@@ -21,7 +21,7 @@ LIB_FILES = ft_atoi ft_strlen ft_bzero ft_isdigit ft_strchr ft_int_len \
 FILES = ft_printf parse tool type_csp print_chars print_addr type_di base \
 	type_ox print_int type_uint parse_flags
 
-FILES+= $(addprefix $(LIB_FOLDER),$(LIB_FILES))
+FILES+= $(addprefix $(LIB_DIR),$(LIB_FILES))
 
 CC = gcc
 FLAG = -Wall -Wextra -Werror -g -I $(INC_DIR)
@@ -40,13 +40,17 @@ all: $(NAME)
 $(NAME): $(OBJ)
 	ar rcs $@ $^
 # Running "ar s" on an archive is equivalent to running ranlib on it.
+# $^ means the all prerequisites
 
 $(CCH_DIR)%.o: $(SRC_DIR)%.c | $(CCH_DIR)
 	$(CC) $(FLAG) -c $< -o $@
+#if .o is older than .c, then do the content
+# $< means the first prerequisite
+# | The names of all the order-only prerequisites, with spaces between them.
 
 $(CCH_DIR):
 	mkdir $@
-	mkdir $(CCH_DIR)$(LIB_FOLDER)
+	mkdir $(CCH_DIR)$(LIB_DIR)
 
 clean:
 	$(RM) $(CCH_DIR)
