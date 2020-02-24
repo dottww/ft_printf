@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   base.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mdavid <mdavid@student.42.fr>              +#+  +:+       +#+        */
+/*   By: weilin <weilin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/22 21:15:46 by weilin            #+#    #+#             */
-/*   Updated: 2020/02/24 11:55:47 by mdavid           ###   ########.fr       */
+/*   Updated: 2020/02/24 15:48:45 by weilin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,6 +102,17 @@ char	*ft_ulltoa_base(unsigned long long n, unsigned long long base)
 	return (val);
 }
 
+/*
+** FONCTION: ft_ultoa_base.
+** PARAMETERS: unsigned long int n: an unsigned long int number.
+** DESCRIPTION:
+** 	Convert an unsigned long integer to a string in uppercase on assigned base
+** 	to have lowercase string, change the number 55 to 87
+** RETURN:
+** 	NULL: if an allocation memory problem comes up.
+** 	char *s
+*/
+
 char	*ft_ultoa_base(unsigned long n, unsigned long base)
 {
 	char				*s;
@@ -122,11 +133,11 @@ char	*ft_ultoa_base(unsigned long n, unsigned long base)
 	while (tmp >= base)
 	{
 		s[--len] = (tmp % base) > 9 ?
-			(tmp % base) + 55 : (tmp % base) + '0'; // or 87 & no lower
+			(tmp % base) + 55 : (tmp % base) + '0';
 		tmp /= base;
 	}
 	s[--len] = (tmp % base) > 9 ?
-		(tmp % base) + 55 : (tmp % base) + '0'; // or 87 & no lower
+		(tmp % base) + 55 : (tmp % base) + '0';
 	return (s);
 }
 

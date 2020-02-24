@@ -6,7 +6,7 @@
 /*   By: weilin <weilin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/20 17:42:55 by weilin            #+#    #+#             */
-/*   Updated: 2020/02/24 01:31:44 by weilin           ###   ########.fr       */
+/*   Updated: 2020/02/24 16:01:16 by weilin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void	type_chars(char type, t_data *t)
 				return ;
 		}
 		else if (!(t->bf = ft_strdup("(null)")))
-			return ;	
+			return ;
 		print_str(t);
 	}
 }
@@ -39,7 +39,7 @@ void	type_chars(char type, t_data *t)
 void	type_percent(t_data *t)
 {
 	int				tmp;
-	
+
 	tmp = t->flag.width;
 	if (t->flag.minus == 1)
 	{

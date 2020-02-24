@@ -6,7 +6,7 @@
 /*   By: weilin <weilin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/16 19:17:21 by lgaultie          #+#    #+#             */
-/*   Updated: 2020/02/24 01:30:22 by weilin           ###   ########.fr       */
+/*   Updated: 2020/02/24 15:15:36 by weilin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -1122,7 +1122,7 @@ int		main(void)
 	// X(pf,ft);
 	// c(pf,ft);
 	// s(pf,ft);
-	p(pf,ft);
+	// p(pf,ft);
 
 	// printf("%p",&free);
 	// TEST("1=%s\n2=%p\n3=%d\n4=%d\n5=%p\n6=%s\n7=%p\n8=%p\n9=%s\n",
@@ -1152,12 +1152,18 @@ int		main(void)
 
 	//segmentation fault
 	// ft_printf("sizeof INT=%s\n",42); 
+	
+	ft_printf("s=%s\nd=%d\n","42",42); 
+	ft_printf("d=%d\ns=%s\n",42,"42"); 
+
+	// ft_printf("s=%s\n",42); 
+	// ft_printf("p1=%p\np2=%p",&free,&free); 
+	// ft_printf("1=%s\n2=%p\n3=%d\n4=%d\n5=%p\n6=%s\n7=%p\n8=%p\n9=%s\n",
+	// 		"a", &free, 1,     2,      &malloc, "b",    &free,  &malloc, "c")  ;
 
 	// ft_printf("\n\n\n\n\n\n"); 
 
 	// ft_printf("sizeof S=%s\n","AB"); 
 	
-
-
 	return (0);
 }

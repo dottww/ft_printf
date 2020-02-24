@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   print_int.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mdavid <mdavid@student.42.fr>              +#+  +:+       +#+        */
+/*   By: weilin <weilin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/24 08:21:40 by mdavid            #+#    #+#             */
-/*   Updated: 2020/02/24 08:24:17 by mdavid           ###   ########.fr       */
+/*   Updated: 2020/02/24 16:10:48 by weilin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,5 +15,6 @@
 void	print_int(t_data *t)
 {
 	t->nb_print += write(t->fd, t->bf, (int)ft_strlen(t->bf));
+	free(t->bf);
 	t->i++;
 }

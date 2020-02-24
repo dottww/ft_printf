@@ -6,36 +6,35 @@
 /*   By: weilin <weilin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/21 19:08:09 by weilin            #+#    #+#             */
-/*   Updated: 2020/02/24 01:23:31 by weilin           ###   ########.fr       */
+/*   Updated: 2020/02/24 16:03:41 by weilin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void fillwidth_base(t_data *t, int n)
+void	fillwidth_base(t_data *t, int n)
 {
 	int i;
-	
+
 	if (n == 0)
-		n =(t->flag.width && !t->flag.prec) ? 0 : 1;
+		n = (t->flag.width && !t->flag.prec) ? 0 : 1;
 	i = (n) ? (t->flag.width - ft_strlen(t->bf)) : t->flag.width;
 	while (i > 0)
 	{
-		t->nb_print += ((t->flag.zero) == 1 ? 
+		t->nb_print += ((t->flag.zero) == 1 ?
 			write(t->fd, "0", 1) : write(t->fd, " ", 1));
 		i--;
 	}
 }
 
-int base_width(char tp, t_data *t)
+int		base_width(char tp, t_data *t)
 {
-	char *tmp;
-	char *new;
-	int len;
-	int i;
-	int x;
+	char	*tmp;
+	char	*new;
+	int		len;
+	int		i;
+	int		x;
 
-	// x = (tp == 'o' && t->bf[0] != '0') ? 1 : 0;
 	x = (tp == 'x' || tp == 'X') ? 2 : 0;
 	len = ft_strlen(t->bf) + x;
 	if (t->flag.width > len)
@@ -52,7 +51,7 @@ int base_width(char tp, t_data *t)
 	return (1);
 }
 
-int base_hash(char tp, t_data *t)
+int		base_hash(char tp, t_data *t)
 {
 	char *tmp;
 
@@ -68,7 +67,7 @@ int base_hash(char tp, t_data *t)
 	}
 	else if (tp == 'x' || tp == 'X')
 	{
-		if(!(tmp = ft_strjoin((tp == 'x' ? "0x" : "0X"), t->bf)))
+		if (!(tmp = ft_strjoin((tp == 'x' ? "0x" : "0X"), t->bf)))
 			return (0);
 		free(t->bf);
 		t->bf = tmp;
@@ -76,37 +75,14 @@ int base_hash(char tp, t_data *t)
 	return (1);
 }
 
-// int base_precision(t_data *t)
-// {
-// 	char *tmp;
-// 	char *new;
-// 	int len;
-// 	int i;
-
-// 	len = ft_strlen(t->bf);
-// 	if (t->flag.prec > len)
-// 	{
-// 		i = t->flag.prec - len;
-// 		if (!(tmp = ft_strnew_c(i, '0')))
-// 			return (0);
-// 		if (!(new = ft_strjoin(tmp, t->bf)))
-// 			return (0);
-// 		free(tmp);
-// 		free(t->bf);
-// 		t->bf = new;
-// 	}
-// 	return (1);
-// }
-
-void print_base(char type, t_data *t, int n)
+void	print_base(char type, t_data *t, int n)
 {
 	if (type != 'o' && (n == 0 || t->bf[0] == '0' || t->bf[0] == '\0'))
-			t->flag.hash = 0;
-	// if (!(base_precision(t)))
+		t->flag.hash = 0;
 	if (!(addr_precision(t)))
-		return;
+		return ;
 	if ((t->flag.hash) && !base_hash(type, t))
-		return;
+		return ;
 	if (t->flag.minus != 1)
 		fillwidth_base(t, n);
 	if (!(t->flag.prec == 0 && n == 0))
@@ -119,7 +95,7 @@ void print_base(char type, t_data *t, int n)
 	t->i++;
 }
 
-void type_base(char type, t_data *t)
+void	type_base(char type, t_data *t)
 {
 	unsigned long val;
 
@@ -132,7 +108,7 @@ void type_base(char type, t_data *t)
 	else if (type == 'o')
 		conv_octal(t, val);
 	if (!(t->bf))
-		return;
+		return ;
 	if (type == 'x')
 		ft_strtolower(t->bf);
 	print_base(type, t, (val) ? 1 : 0);

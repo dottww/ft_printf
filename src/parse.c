@@ -3,28 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   parse.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mdavid <mdavid@student.42.fr>              +#+  +:+       +#+        */
+/*   By: weilin <weilin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/15 20:54:00 by weilin            #+#    #+#             */
-/*   Updated: 2020/02/24 08:01:47 by mdavid           ###   ########.fr       */
+/*   Updated: 2020/02/24 15:56:55 by weilin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	parse_width(t_data *t)
-{
-	t->flag.width = va_arg(t->valist, int);
-	if (t->flag.width < 0)
-	{
-		t->flag.width = -(t->flag.width);
-		t->flag.minus = 1;
-	}
-}
-
 void	parse_type(const char *fmt, t_data *t)
 {
- 	if (fmt[t->i] == 'c' || fmt[t->i] == 's')
+	if (fmt[t->i] == 'c' || fmt[t->i] == 's')
 		type_chars(fmt[t->i], t);
 	else if (fmt[t->i] == '%')
 		type_percent(t);
@@ -34,53 +24,17 @@ void	parse_type(const char *fmt, t_data *t)
 		type_int(t);
 	// else if (fmt[t->i] == 'u' || fmt[t->i] == 'U')
 	// 	type_uint(fmt[t->i], t);
-	else if (ft_strchr("oxX", fmt[t->i])) //b?
+	else if (ft_strchr("oxX", fmt[t->i]))
 		type_base(fmt[t->i], t);
 	// else if (fmt[t->i] == 'f' || fmt[t->i] == 'F')
-	// 	type_float(fmt[t->i], t);		
+	// 	type_float(fmt[t->i], t);
 	else if (fmt[t->i] != '\0')
 		print_char(t, fmt[t->i]);
 }
 
-void	parse_prec(const char *fmt, t_data *t)
-{
-	if (t->flag.prec >= 0)
-	{
-		t->i++;
-		return;
-	} //if already exist then do not take more prec
-	else if (fmt[t->i] == '.' && fmt[t->i + 1] == '*')
-	{
-		t->flag.prec = va_arg(t->valist, int);
-		// t->flag.prec = 0;
-		t->i += 2;
-	}
-	if (fmt[t->i] == '.' && ft_isdigit(fmt[t->i + 1]))
-	{
-		t->i++;
-		t->flag.prec = ft_atoi(fmt + t->i);
-		while (ft_isdigit(fmt[t->i]))
-			t->i++;
-	}
-	else
-		t->flag.prec = 0;
-}
-
-void	parse_mod(const char *fmt, t_data *t)
-{
-	if (fmt[t->i] == 'l' && fmt[t->i + 1] != 'l' && t->mod == MOD_n)
-		t->mod = MOD_l;
-	else if (fmt[t->i] == 'l' && fmt[t->i + 1] == 'l')
-		t->mod = MOD_ll;
-	if (fmt[t->i] == 'h' && fmt[t->i + 1] != 'h' && t->mod == MOD_n)
-		t->mod = MOD_h;
-	else if (fmt[t->i] == 'h' && fmt[t->i + 1] == 'h')
-		t->mod = MOD_hh;
-}
-
 void	parse_flag(const char *fmt, t_data *t)
 {
-	while (ft_strchr("'+-0# *.123456789hlLjz", fmt[t->i])) //hlLjz*'
+	while (ft_strchr("'+-0# *.123456789hlLjz", fmt[t->i]))
 	{
 		fmt[t->i] == '+' ? t->flag.plus = 1 : 0;
 		fmt[t->i] == '-' ? t->flag.minus = 1 : 0;
@@ -89,7 +43,6 @@ void	parse_flag(const char *fmt, t_data *t)
 		fmt[t->i] == ' ' ? t->flag.space = 1 : 0;
 		fmt[t->i] == '*' ? parse_width(t) : 0;
 		fmt[t->i] >= 'L' && fmt[t->i] <= 'z' ? parse_mod(fmt, t) : 0;
-		//LL size
 		if (fmt[t->i] == '.')
 			parse_prec(fmt, t);
 		else if (ft_isdigit(fmt[t->i]))
@@ -109,7 +62,6 @@ void	parse(const char *fmt, t_data *t)
 	init_flag(t);
 	parse_flag(fmt, t);
 	if (t->i > (int)ft_strlen(fmt) - 1)
-		return;
+		return ;
 	parse_type(fmt, t);
-	//pending
 }

@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: mdavid <mdavid@student.42.fr>              +#+  +:+       +#+         #
+#    By: weilin <weilin@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/01/11 16:48:33 by weilin            #+#    #+#              #
-#    Updated: 2020/02/24 11:48:41 by mdavid           ###   ########.fr        #
+#    Updated: 2020/02/24 15:56:28 by weilin           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,10 +16,10 @@ LIB_FOLDER = libft/
 LIB_FILES = ft_atoi ft_strlen ft_bzero ft_isdigit ft_strchr ft_int_len \
 			ft_strdup ft_strsub ft_strtolower ft_strjoin ft_strnew ft_strcat \
 			ft_strcpy ft_itoa ft_strnew_c ft_strdel ft_memalloc ft_strjoin \
-			ft_putnbr ft_putchar ft_strcmp
+			ft_putnbr ft_putchar ft_strcmp ft_memdel
 
 FILES = ft_printf parse tool type_csp print_chars print_addr type_di base \
-	type_ox print_int type_uint
+	type_ox print_int type_uint parse_flags
 
 FILES+= $(addprefix $(LIB_FOLDER),$(LIB_FILES))
 
