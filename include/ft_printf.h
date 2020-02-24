@@ -6,7 +6,7 @@
 /*   By: mdavid <mdavid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 16:37:37 by weilin            #+#    #+#             */
-/*   Updated: 2020/02/24 09:47:47 by mdavid           ###   ########.fr       */
+/*   Updated: 2020/02/24 12:07:35 by mdavid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,24 +66,32 @@ void	ft_printf_debug(t_data *info);
 
 int		ft_printf(const char *fmt, ...);
 
-void	parse(const char *fmt, t_data *t);
-void	parse_flag(const char *fmt, t_data *t);
+/*
+** Functions related to the parsing
+** File(s): parse.c
+*/
 void	parse_width(t_data *t);
-void	parse_mod(const char *fmt, t_data *t);
-void	parse_prec(const char *fmt, t_data *t);
 void	parse_type(const char *fmt, t_data *t);
+void	parse_prec(const char *fmt, t_data *t);
+void	parse_mod(const char *fmt, t_data *t);
+void	parse_flag(const char *fmt, t_data *t);
+void	parse(const char *fmt, t_data *t);
 
+/*
+** Functions related to the process of char, str, addr ...
+** File(s): type_csp.c, print_chars.c, print_addr.c
+*/
 void	type_chars(char type, t_data *t);
-void	type_addr(t_data *t);
 void	type_percent(t_data *t);
+void	type_addr(t_data *t);
 void	type_base(char type, t_data *t);
-void	print_char(t_data *t, unsigned char ch);
-void	print_str(t_data *t);
 void	print_addr(t_data *t);
-void	print_hash(char type, t_data *t);
-void	print_base(char type, t_data *t, int n);
-void	fillwidth_char(t_data *t);
 void	fillwidth_str(t_data *t);
+void	print_str(t_data *t);
+void	fillwidth_char(t_data *t);
+void	print_char(t_data *t, unsigned char ch);
+void	print_base(char type, t_data *t, int n);
+void	print_hash(char type, t_data *t);
 void	fillwidth_addr(t_data *t);
 void	fillwidth_base(t_data *t, int n);
 // void	fillwidth_addr2(t_data *t);
@@ -102,12 +110,22 @@ char	*ft_uitoa_base(unsigned int n, unsigned int base);
 char	*ft_ultoa_base(unsigned long n, unsigned long base);
 char	*ft_ulltoa_base(unsigned long long n, unsigned long long base);
 
+/*
+** Functions related to the processing of an integer arg
+** File(s): type_di.c
+*/
 void	type_int(t_data *t);
 int		ft_flag_width_for_int(t_data *t, char **val, int len);
 char	ft_flag_zero_for_int(t_data *t);
 int		ft_flag_plus_space_for_int(t_data *t, char **val, int neg);
 int		ft_flag_prec_for_int(t_data *t, char **val);
 void	print_int(t_data *t);
+
+/*
+** Functions related to the processing of an unsigned integer arg
+** File(s): type_uint.c
+*/
+void	type_uint(t_data *t)
 
 #endif
 
