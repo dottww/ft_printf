@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   base.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: weilin <weilin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mdavid <mdavid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/22 21:15:46 by weilin            #+#    #+#             */
-/*   Updated: 2020/02/23 18:59:58 by weilin           ###   ########.fr       */
+/*   Updated: 2020/02/24 11:55:47 by mdavid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,42 @@ char	*ft_ulltoa(unsigned long long n)
 	char					*val;
 	int						len;
 	unsigned long long int	tmp;
+
+	len = 1;
+	tmp = n;
+	while (tmp >= 10)
+	{
+		tmp /= 10;
+		len++;
+	}
+	if (!(val = ft_memalloc(len + 1)))
+		return (NULL);
+	val[len] = '\0';
+	tmp = n;
+	while (tmp >= 10)
+	{
+		val[--len] = (tmp % 10) + '0';
+		tmp /= 10;
+	}
+	val[--len] = (tmp % 10) + '0';
+	return (val);
+}
+
+/*
+** FONCTION: ft_uitoa.
+** PARAMETERS: unsigned int n: an unsigned int number.
+** DESCRIPTION:
+** 	Convert an unsigned integer to a string.
+** RETURN:
+** 	NULL: if an allocation memory problem comes up.
+** 	char *val
+*/
+
+char	*ft_uitoa(unsigned int n)
+{
+	char			*val;
+	int				len;
+	unsigned int	tmp;
 
 	len = 1;
 	tmp = n;
