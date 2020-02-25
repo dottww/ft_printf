@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   type_di.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mdavid <mdavid@student.42.fr>              +#+  +:+       +#+        */
+/*   By: weilin <weilin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/21 14:59:08 by mdavid            #+#    #+#             */
-/*   Updated: 2020/02/25 12:38:26 by mdavid           ###   ########.fr       */
+/*   Updated: 2020/02/25 14:50:39 by weilin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,8 +84,7 @@ int		ft_flag_minus_for_int(t_data *t, char **val, char **str_w, int neg)
 {
 	char	*tmp;
 
-	tmp = ft_strdup(*val);
-	ft_strdel(val);
+	tmp = *val;
 	(t->flag.zero == 0 || t->flag.minus == 1) ?
 	ft_flag_plus_space_for_int(t, &tmp, neg) : ft_flag_plus_space_for_int(t, str_w, neg);
 	if (t->flag.minus == 1)
@@ -127,19 +126,19 @@ int		ft_flag_prec_for_int(t_data *t, char **val)
 {
 	int		len_diff;
 	char	*tmp;
+	char	*ctmp;
 
-	tmp = "";
 	len_diff = t->flag.prec - (int)ft_strlen(*val);
 	if (len_diff > 0)
-	{
-		if (!(tmp = ft_strjoin(ft_strnew_c((size_t)len_diff, '0'), *val)))
+	{	
+		if (!(ctmp = ft_strnew_c((size_t)len_diff, '0')) ||
+		 	!(tmp = ft_strjoin(ctmp, *val)))
 		{
 			ft_strdel(val);
 			return ((int)STAT_ERR);
 		}
-		ft_strdel(val);
-		if (!(*val = ft_strdup(tmp)))
-			return ((int)STAT_ERR);
+		free(ctmp);
+		*val = ft_strreset2(val, tmp);
 		t->flag.zero = 0;
 	}
 	if (t->flag.prec == 0 && ft_strcmp(*val,"0") == 0)
