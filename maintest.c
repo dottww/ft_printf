@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   maintest.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: weilin <weilin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mdavid <mdavid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/16 19:17:21 by lgaultie          #+#    #+#             */
-/*   Updated: 2020/02/24 15:15:36 by weilin           ###   ########.fr       */
+/*   Updated: 2020/02/25 11:17:46 by mdavid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ printf("--------------------%%x--------------------\n");
 	TEST("0.1) Vrai PRINTF : |%#08x|\n", 42);
 	TEST("0.2)@moulitest: |%5.x. .%5.0x.|\n", 0, 0);
 	TEST("01) Vrai PRINTF : |%x|\n", 34);
-	TEST("02) Vrai PRINTF : |%x|\n", -34);
+	TEST("02) Vrai PRINTF :25 |%x|\n", -34);
 	TEST("03) Vrai PRINTF : |%-x|\n", 50);
 	TEST("04) Vrai PRINTF : |%10x|\n", 90);
 	TEST("05) Vrai PRINTF : |%.10x|\n", 90);
@@ -489,7 +489,7 @@ printf("--------------------%%o--------------------\n");		//perfect
 	TEST("28) Vrai PRINTF : |%#llo| |%#llo|\n", (unsigned long long)-1, ULLONG_MAX + 1);
 		
 }
-/*
+
 void diu(pf,ft)
 {
 printf("--------------------%%d-et-%%i--------------------\n");	//perfect
@@ -851,7 +851,7 @@ printf("--------------------%%u--------------------\n");		//19/20
 	TEST("19) Vrai PRINTF : |%llu|\n", (unsigned long long)ULLONG_MAX);
 	TEST("20) Vrai PRINTF : |%llu| |%llu|\n", (unsigned long long)-1, (unsigned long long)ULLONG_MAX + 1);
 	}
-*/
+
 void	f(pf,ft)
 {printf("--------------------%%f--------------------\n");
 	TEST("01) Vrai PRINTF	: |%.10Lf|\n", (long double)243.5);
@@ -1031,7 +1031,7 @@ void limit(pf,ft)
 	// printf("ptf:lu=%lu\n",(unsigned long)"1");
 	// printf("ptf:s=%s",ultoa_base((unsigned long)"1",16));
 	// printf("sizeof char = %d",(int)sizeof(char));
-/*
+
 	printf("SCHAR_MAX		:%hhd\n", (char)SCHAR_MAX);
 	printf("SCHAR_MIN		:%hhd\n", (char)SCHAR_MIN);
 	printf("UCHAR_MAX		:%hhd\n", (unsigned char)UCHAR_MAX);
@@ -1040,17 +1040,17 @@ void limit(pf,ft)
 	printf("Short void	printed by %%d == %%i: Signed int\n");
 	printf("SHRT_MAX		:%hd\n", (short)SHRT_MAX);
 	printf("SHRT_MIN		:%hd\n", (short)SHRT_MIN);
-	printf("USHRT_MAX		:%d\n", (short)USHRT_MAX);
-	printf("USHRT_MAX		:%hd\n", USHRT_MAX);
+	printf("USHRT_MAX		:%d\n", (unsigned short)USHRT_MAX);
+	printf("USHRT_MAX		:%hd\n", (unsigned short)USHRT_MAX);
 	
 	printf("USHRT_MAX		:%d\n", USHRT_MAX);
 	printf("USHRT_MAX		:%d\n", (unsigned short)USHRT_MAX);
 	printf("\n");
 	
 	printf("unsigned char printed by %%d == %%i: Signed int\n");
-	printf("SHRT_MAX		:%hd\n", SHRT_MAX);
-	printf("SHRT_MIN		:%hd\n", SHRT_MIN);
-	printf("USHRT_MAX		:%hd\n", USHRT_MAX);
+	printf("SHRT_MAX		:%hd\n", (short)SHRT_MAX);
+	printf("SHRT_MIN		:%hd\n", (short)SHRT_MIN);
+	printf("USHRT_MAX		:%hd\n", (unsigned short)USHRT_MAX);
 	printf("\n");
 	
 	printf("%%d == %%i: Signed int\n");
@@ -1106,7 +1106,6 @@ void limit(pf,ft)
 	printf("(llu, LLONG_MIN)	:%llu (minus disappeared)\n", LLONG_MIN);
 	printf("(llu, ULLONG_MAX)	:%llu\n", ULLONG_MAX);
 	printf("\n");
-*/	
 }
 
 int		main(void)
@@ -1123,6 +1122,9 @@ int		main(void)
 	// c(pf,ft);
 	// s(pf,ft);
 	// p(pf,ft);
+	diu(pf,ft);
+	
+	//limit(pf,ft);
 
 	// printf("%p",&free);
 	// TEST("1=%s\n2=%p\n3=%d\n4=%d\n5=%p\n6=%s\n7=%p\n8=%p\n9=%s\n",
@@ -1135,8 +1137,6 @@ int		main(void)
 	// TEST("#2llx|%#2llx|\n", (unsigned long long)0);
 	// TEST("#.o|%#.o|\n", 0);
 	// TEST(".o|%.o|\n", 0);
-	
-
 	
 
 	// printf("0.1) Vrai PRINTF : |%#08x|\n", 42);
