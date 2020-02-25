@@ -6,7 +6,7 @@
 /*   By: mdavid <mdavid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/21 14:59:08 by mdavid            #+#    #+#             */
-/*   Updated: 2020/02/25 12:13:18 by mdavid           ###   ########.fr       */
+/*   Updated: 2020/02/25 12:38:26 by mdavid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -178,7 +178,7 @@ int		ft_flag_width_for_int(t_data *t, char **val, size_t len, int neg)
 			return((int)STAT_ERR);
 	}
 	else
-		ft_flag_plus_space_for_int(t, val, neg);
+		ft_flag_plus_space_for_int(t, val, neg);/// modification for unsigned here
 	return ((int)STAT_OK);
 }
 
