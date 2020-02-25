@@ -6,7 +6,7 @@
 /*   By: weilin <weilin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/15 20:54:00 by weilin            #+#    #+#             */
-/*   Updated: 2020/02/25 16:57:55 by weilin           ###   ########.fr       */
+/*   Updated: 2020/02/25 19:48:07 by weilin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	parse_type(const char *fmt, t_data *t)
 	else if (fmt[t->i] == 'd' || fmt[t->i] == 'i')
 		type_int(t);
 	else if (fmt[t->i] == 'u')
-		type_uint(fmt[t->i], t);
+		type_uint(t);
 	else if (fmt[t->i] == 'o' || fmt[t->i] == 'x' || fmt[t->i] == 'X')
 		type_base(fmt[t->i], t);
 	else if (fmt[t->i] != '\0')
