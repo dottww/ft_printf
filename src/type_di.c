@@ -6,7 +6,7 @@
 /*   By: weilin <weilin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/21 14:59:08 by mdavid            #+#    #+#             */
-/*   Updated: 2020/02/25 14:50:39 by weilin           ###   ########.fr       */
+/*   Updated: 2020/02/25 15:09:02 by weilin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -138,7 +138,7 @@ int		ft_flag_prec_for_int(t_data *t, char **val)
 			return ((int)STAT_ERR);
 		}
 		free(ctmp);
-		*val = ft_strreset2(val, tmp);
+		*val = ft_strreset(*val, tmp);
 		t->flag.zero = 0;
 	}
 	if (t->flag.prec == 0 && ft_strcmp(*val,"0") == 0)
@@ -171,10 +171,13 @@ int		ft_flag_width_for_int(t_data *t, char **val, size_t len, int neg)
 	(t->flag.plus == 1 || t->flag.space == 1 || neg == 1) ? len_diff -= 1 : 0;
 	if (len_diff > 0)
 	{
-		if (!(str_w = ft_strnew_c((size_t)len_diff, ft_flag_zero_for_int(t))))
-			return ((int)STAT_ERR);
-		if (ft_flag_minus_for_int(t, val, &str_w, neg) == (int)STAT_ERR)
+		if (!(str_w = ft_strnew_c((size_t)len_diff, ft_flag_zero_for_int(t)))
+			|| ft_flag_minus_for_int(t, val, &str_w, neg) == (int)STAT_ERR)
+		{
+			free(str_w);
+			ft_strdel(val);
 			return((int)STAT_ERR);
+		}
 	}
 	else
 		ft_flag_plus_space_for_int(t, val, neg);/// modification for unsigned here
