@@ -6,13 +6,13 @@
 /*   By: weilin <weilin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/24 11:35:11 by mdavid            #+#    #+#             */
-/*   Updated: 2020/02/25 19:42:42 by weilin           ###   ########.fr       */
+/*   Updated: 2020/02/25 19:46:43 by weilin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	type_uint(char type, t_data *t)
+void	type_uint(t_data *t)
 {
 	unsigned long int		n;
 	int						neg;
