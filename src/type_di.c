@@ -6,14 +6,14 @@
 /*   By: weilin <weilin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/21 14:59:08 by mdavid            #+#    #+#             */
-/*   Updated: 2020/02/25 15:28:10 by weilin           ###   ########.fr       */
+/*   Updated: 2020/02/25 15:58:59 by weilin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
 /*
-** FONCTION: ft_flag_plus_space_for_int
+** FONCTION: ft_flag_plus_space_for__int
 ** PARAMETERS:	t_data *t: pointer on the principal variable structure.
 ** 				int sign: sign of the integer received as parameter.
 ** 				char **val: adress of the number as a string
@@ -63,7 +63,7 @@ char	ft_flag_zero_for_int(t_data *t)
 }
 
 /*
-** FONCTION: ft_flag_minus_for_int
+** FONCTION: ft_flag_minus_for__int
 ** PARAMETERS:	t_data *t: pointer on the principal variable structure.
 ** 				char **val: adress of the number as a string
 ** DESCRIPTION:
@@ -77,21 +77,28 @@ char	ft_flag_zero_for_int(t_data *t)
 int		ft_flag_minus_for_int(t_data *t, char **val, char **str_w, int neg)
 {
 	char	*tmp;
+	int		i;
 
-	tmp = *val;
-	(t->flag.zero == 0 || t->flag.minus == 1) ?
-	ft_flag_plus_space_for_int(t, &tmp, neg) : ft_flag_plus_space_for_int(t, str_w, neg);
+	if (t->flag.zero == 0 || t->flag.minus == 1)
+		i = ft_flag_plus_space_for_int(t, val, neg);
+	else 
+		i = ft_flag_plus_space_for_int(t, str_w, neg);
 	if (t->flag.minus == 1)
 	{
-		if (!(*val = ft_strjoin(tmp, *str_w)))
+		if (i == (int)STAT_ERR || !(tmp = ft_strjoin(*val, *str_w)))
 			return ((int)STAT_ERR);
 	}
 	else
 	{
-		if (!(*val = ft_strjoin(*str_w, tmp)))
+		if (i == (int)STAT_ERR || !(tmp = ft_strjoin(*str_w, *val)))
 			return ((int)STAT_ERR);
 	}
-	ft_strdel(&tmp);
+	str_w ? ft_strdel(str_w) : 0;
+	if (i == (int)STAT_ERR || tmp)
+		*val = ft_strreset(*val, tmp);
+	else
+		if (i == (int)STAT_ERR || !(*val = ft_strdup("")))
+			return ((int)STAT_ERR);
 	return((int)STAT_OK);
 }
 
@@ -133,7 +140,7 @@ int		ft_flag_prec_for_int(t_data *t, char **val)
 }
 
 /*
-** FONCTION: ft_flag_width_for_int
+** FONCTION: ft_flag_width_for__int
 ** PARAMETERS:	t_data *t: pointer on the principal variable structure.
 ** 				char **val: adress of the number as a string
 ** DESCRIPTION:
@@ -155,13 +162,14 @@ int		ft_flag_width_for_int(t_data *t, char **val, size_t len, int neg)
 	{
 		if (!(str_w = ft_strnew_c((size_t)len_diff, ft_flag_zero_for_int(t)))
 			|| ft_flag_minus_for_int(t, val, &str_w, neg) == (int)STAT_ERR)
+			//ped
 		{
 			(str_w) ? free(str_w) : 0;
 			return((int)STAT_ERR);
 		}
 	}
 	else
-		ft_flag_plus_space_for_int(t, val, neg);/// modification for unsigned here
+		return (ft_flag_plus_space_for_int(t, val, neg));/// modification for unsigned here
 	return ((int)STAT_OK);
 }
 
