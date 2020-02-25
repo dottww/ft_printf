@@ -6,7 +6,7 @@
 /*   By: mdavid <mdavid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/21 14:59:08 by mdavid            #+#    #+#             */
-/*   Updated: 2020/02/25 11:16:41 by mdavid           ###   ########.fr       */
+/*   Updated: 2020/02/25 12:13:18 by mdavid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,8 +86,8 @@ int		ft_flag_minus_for_int(t_data *t, char **val, char **str_w, int neg)
 
 	tmp = ft_strdup(*val);
 	ft_strdel(val);
-	(t->flag.zero == 0) ? ft_flag_plus_space_for_int(t, &tmp, neg) :
-		ft_flag_plus_space_for_int(t, str_w, neg);
+	(t->flag.zero == 0 || t->flag.minus == 1) ?
+	ft_flag_plus_space_for_int(t, &tmp, neg) : ft_flag_plus_space_for_int(t, str_w, neg);
 	if (t->flag.minus == 1)
 	{
 		if (!(*val = ft_strjoin(tmp, *str_w)))

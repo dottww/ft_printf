@@ -6,7 +6,7 @@
 /*   By: mdavid <mdavid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 16:37:37 by weilin            #+#    #+#             */
-/*   Updated: 2020/02/25 10:24:07 by mdavid           ###   ########.fr       */
+/*   Updated: 2020/02/25 11:47:59 by mdavid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,6 +123,6 @@ void			print_int(t_data *t);
 ** Functions related to the processing of an unsigned integer arg
 ** File(s): type_uint.c
 */
-void			type_uint(t_data *t);
+void			type_uint(char type, t_data *t);
 
 #endif
