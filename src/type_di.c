@@ -6,7 +6,7 @@
 /*   By: weilin <weilin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/21 14:59:08 by mdavid            #+#    #+#             */
-/*   Updated: 2020/02/25 15:09:02 by weilin           ###   ########.fr       */
+/*   Updated: 2020/02/25 15:28:10 by weilin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,14 +38,8 @@ int		ft_flag_plus_space_for_int(t_data *t, char **val, int neg)
 	if (tot != 0)
 	{
 		if (!(tmp = ft_strjoin(mps, *val)))
-		{
-			ft_strdel(val);	
 			return ((int)STAT_ERR);
-		}
-		ft_strdel(val);
-		if (!(*val = ft_strdup(tmp)))
-			return ((int)STAT_ERR);
-		ft_strdel(&tmp);
+		*val = ft_strreset(*val, tmp);
 	}
 	return ((int)STAT_OK);
 }
@@ -90,23 +84,14 @@ int		ft_flag_minus_for_int(t_data *t, char **val, char **str_w, int neg)
 	if (t->flag.minus == 1)
 	{
 		if (!(*val = ft_strjoin(tmp, *str_w)))
-		{
-			ft_strdel(val);
-			ft_strdel(str_w);
 			return ((int)STAT_ERR);
-		}
 	}
 	else
 	{
 		if (!(*val = ft_strjoin(*str_w, tmp)))
-		{
-			ft_strdel(val);
-			ft_strdel(str_w);
 			return ((int)STAT_ERR);
-		}
 	}
 	ft_strdel(&tmp);
-	ft_strdel(str_w);
 	return((int)STAT_OK);
 }
 
@@ -131,19 +116,16 @@ int		ft_flag_prec_for_int(t_data *t, char **val)
 	len_diff = t->flag.prec - (int)ft_strlen(*val);
 	if (len_diff > 0)
 	{	
-		if (!(ctmp = ft_strnew_c((size_t)len_diff, '0')) ||
-		 	!(tmp = ft_strjoin(ctmp, *val)))
-		{
-			ft_strdel(val);
+		if (!(ctmp = ft_strnew_c((size_t)len_diff, '0')))
 			return ((int)STAT_ERR);
-		}
+		if (!(tmp = ft_strjoin(ctmp, *val)))
+			return ((int)STAT_ERR);
 		free(ctmp);
 		*val = ft_strreset(*val, tmp);
 		t->flag.zero = 0;
 	}
 	if (t->flag.prec == 0 && ft_strcmp(*val,"0") == 0)
 	{
-		ft_strdel(val);
 		if (!(*val = ft_strdup("")))
 			return ((int)STAT_ERR);
 	}
@@ -174,8 +156,7 @@ int		ft_flag_width_for_int(t_data *t, char **val, size_t len, int neg)
 		if (!(str_w = ft_strnew_c((size_t)len_diff, ft_flag_zero_for_int(t)))
 			|| ft_flag_minus_for_int(t, val, &str_w, neg) == (int)STAT_ERR)
 		{
-			free(str_w);
-			ft_strdel(val);
+			(str_w) ? free(str_w) : 0;
 			return((int)STAT_ERR);
 		}
 	}
@@ -203,10 +184,12 @@ void	type_int(t_data *t)
 	init_int_arg(t, &n);
 	neg = (n < 0) ? 1 : 0;
 	val = (neg == 1) ? ft_ulltoa(-n) : ft_ulltoa(n);
-	if (ft_flag_prec_for_int(t, &val) == (int)STAT_ERR)
-		return;
-	if (ft_flag_width_for_int(t, &val, ft_strlen(val), neg) == (int)STAT_ERR)
-		return;
+	if (ft_flag_prec_for_int(t, &val) == (int)STAT_ERR || 
+		(ft_flag_width_for_int(t, &val, ft_strlen(val), neg) == (int)STAT_ERR))
+	{
+		(val) ? ft_strdel(&val) : 0;
+		return ;
+	}
 	//if (ft_flag_plus_space_for_int(t, &val, neg) == (int)STAT_ERR)
 	//	return;
 	if (!(val))
