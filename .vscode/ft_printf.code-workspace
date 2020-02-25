@@ -28,7 +28,9 @@
 			"stdarg.h": "c",
 			"limits.h": "c",
 			"ios": "c",
-			"sstream": "c"
+			"sstream": "c",
+			"fpoint.h": "c",
+			"cdefs.h": "c"
 		}
 	},
 }

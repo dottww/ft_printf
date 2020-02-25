@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mdavid <mdavid@student.42.fr>              +#+  +:+       +#+        */
+/*   By: weilin <weilin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 16:37:37 by weilin            #+#    #+#             */
-/*   Updated: 2020/02/25 11:47:59 by mdavid           ###   ########.fr       */
+/*   Updated: 2020/02/25 17:15:28 by weilin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,11 +54,6 @@ typedef	struct	s_data
 	int		len;
 	t_mod	mod;
 }				t_data;
-
-// for testing
-# include <stdio.h>
-void			ft_printf_debug(t_data *info);
-// for testing
 
 int				ft_printf(const char *fmt, ...);
 
@@ -111,13 +106,12 @@ char			*ft_ulltoa_base(unsigned long long n, unsigned long long base);
 ** File(s): type_di.c
 */
 void			type_int(t_data *t);
-int				ft_flag_width_for_int(t_data *t, char **val, size_t len, int neg);
-int				ft_flag_minus_for_int(t_data *t, char **val, char **str_w, int neg);
-char			ft_flag_zero_for_int(t_data *t);
-int				ft_flag_plus_space_for_int(t_data *t, char **val, int neg);
-int				ft_flag_prec_for_int(t_data *t, char **val);
+int				ft_width_for_int(t_data *t, char **val, size_t len, int neg);
+int				ft_minus_for_int(t_data *t, char **val, char **str_w, int neg);
+char			ft_zero_for_int(t_data *t);
+int				ft_plus_space_for_int(t_data *t, char **val, int neg);
+int				ft_prec_for_int(t_data *t, char **val);
 void			print_int(t_data *t);
-
 
 /*
 ** Functions related to the processing of an unsigned integer arg

@@ -6,7 +6,7 @@
 #    By: weilin <weilin@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/01/11 16:48:33 by weilin            #+#    #+#              #
-#    Updated: 2020/02/25 14:57:45 by weilin           ###   ########.fr        #
+#    Updated: 2020/02/25 17:19:29 by weilin           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -66,6 +66,6 @@ re: fclean
 norm:
 	@echo $(RED)
 	@echo $(END)
-	# norminette $(SRC) $(INC_DIR) | grep -v Norme -B1 || true
+	norminette $(SRC) $(INC_DIR) | grep -v Norme -B1 || true
 
 .PHONY: all clean fclean re norm
