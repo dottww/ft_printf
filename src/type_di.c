@@ -6,14 +6,14 @@
 /*   By: weilin <weilin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/21 14:59:08 by mdavid            #+#    #+#             */
-/*   Updated: 2020/02/25 17:15:26 by weilin           ###   ########.fr       */
+/*   Updated: 2020/02/25 19:42:18 by weilin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
 /*
-** FONCTION: ft_flag_plus_space_for__int
+** FONCTION: ft_plus_space_for_int
 ** PARAMETERS:	t_data *t: pointer on the principal variable structure.
 ** 				int sign: sign of the integer received as parameter.
 ** 				char **val: adress of the number as a string
@@ -45,7 +45,7 @@ int		ft_plus_space_for_int(t_data *t, char **val, int neg)
 }
 
 /*
-** FONCTION: ft_flag_minus_for__int
+** FONCTION: ft_minus_for_int
 ** PARAMETERS:	t_data *t: pointer on the principal variable structure.
 ** 				char **val: adress of the number as a string
 ** DESCRIPTION:
@@ -121,7 +121,7 @@ int		ft_prec_for_int(t_data *t, char **val)
 }
 
 /*
-** FONCTION: ft_flag_width_for__int
+** FONCTION: ft_width_for_int
 ** PARAMETERS:	t_data *t: pointer on the principal variable structure.
 ** 				char **val: adress of the number as a string
 ** DESCRIPTION:
@@ -171,6 +171,7 @@ void	type_int(t_data *t)
 	int				neg;
 	char			*val;
 
+	(t->flag.prec >= 0) ? t->flag.zero = 0 : 0;
 	init_int_arg(t, &n);
 	neg = (n < 0) ? 1 : 0;
 	val = (neg == 1) ? ft_ulltoa(-n) : ft_ulltoa(n);

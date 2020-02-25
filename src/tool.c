@@ -6,7 +6,7 @@
 /*   By: weilin <weilin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/20 17:13:59 by weilin            #+#    #+#             */
-/*   Updated: 2020/02/25 17:06:57 by weilin           ###   ########.fr       */
+/*   Updated: 2020/02/25 19:44:07 by weilin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,23 +38,18 @@ void	init_int_arg(t_data *t, long int *val)
 		*val = (long int)va_arg(t->valist, long int);
 }
 
-void	init_uint_arg(char type, t_data *t, unsigned long *val)
+void	init_uint_arg(t_data *t, unsigned long *val)
 {
-	if (type == 'U')
+	if (t->mod == MOD_n)
+		*val = (unsigned long)va_arg(t->valist, unsigned int);
+	else if (t->mod == MOD_hh)
+		*val = (unsigned char)va_arg(t->valist, unsigned int);
+	else if (t->mod == MOD_h)
+		*val = (short unsigned int)va_arg(t->valist, unsigned int);
+	else if (t->mod == MOD_l)
 		*val = (unsigned long)va_arg(t->valist, unsigned long);
-	else
-	{
-		if (t->mod == MOD_n)
-			*val = (unsigned long)va_arg(t->valist, unsigned int);
-		else if (t->mod == MOD_hh)
-			*val = (unsigned char)va_arg(t->valist, unsigned int);
-		else if (t->mod == MOD_h)
-			*val = (short unsigned int)va_arg(t->valist, unsigned int);
-		else if (t->mod == MOD_l)
-			*val = (unsigned long)va_arg(t->valist, unsigned long);
-		else if (t->mod == MOD_ll)
-			*val = (unsigned long)va_arg(t->valist, unsigned long);
-	}
+	else if (t->mod == MOD_ll)
+		*val = (unsigned long)va_arg(t->valist, unsigned long);
 }
 
 void	conv_octal(t_data *t, unsigned long val)

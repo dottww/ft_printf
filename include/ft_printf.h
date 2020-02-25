@@ -6,7 +6,7 @@
 /*   By: weilin <weilin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 16:37:37 by weilin            #+#    #+#             */
-/*   Updated: 2020/02/25 17:15:28 by weilin           ###   ########.fr       */
+/*   Updated: 2020/02/25 19:43:43 by weilin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,7 @@ void			fillwidth_base(t_data *t, int n);
 
 void			init_flag(t_data *t);
 void			init_int_arg(t_data *t, long int *val);
-void			init_uint_arg(char type, t_data *t, unsigned long *val);
+void			init_uint_arg(t_data *t, unsigned long *val);
 int				addr_precision(t_data *t);
 int				base_hash(char tp, t_data *t);
 int				base_width(char tp, t_data *t);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   type_ox.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mdavid <mdavid@student.42.fr>              +#+  +:+       +#+        */
+/*   By: weilin <weilin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/21 19:08:09 by weilin            #+#    #+#             */
-/*   Updated: 2020/02/25 09:06:44 by mdavid           ###   ########.fr       */
+/*   Updated: 2020/02/25 19:43:34 by weilin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,7 +102,7 @@ void	type_base(char type, t_data *t)
 	(t->flag.minus == 1 || t->flag.prec >= 0) ? t->flag.zero = 0 : 0;
 	t->flag.plus = 0;
 	t->flag.space = 0;
-	init_uint_arg(type, t, &val);
+	init_uint_arg(t, &val);
 	if (type == 'X' || type == 'x')
 		conv_hexa(t, val);
 	else if (type == 'o')
