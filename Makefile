@@ -6,7 +6,7 @@
 #    By: weilin <weilin@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/01/11 16:48:33 by weilin            #+#    #+#              #
-#    Updated: 2020/02/25 17:19:29 by weilin           ###   ########.fr        #
+#    Updated: 2020/02/25 18:49:59 by weilin           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,11 +15,11 @@ NAME = libftprintf.a
 LIB_DIR = libft/
 LIB_FILES = ft_atoi ft_strlen ft_bzero ft_isdigit ft_strchr ft_int_len \
 			ft_strdup ft_strsub ft_strtolower ft_strjoin ft_strnew ft_strcat \
-			ft_strcpy ft_itoa ft_strnew_c ft_strdel ft_memalloc ft_strjoin \
-			ft_putnbr ft_putchar ft_strcmp ft_memdel ft_strreset
+			ft_strcpy ft_itoa ft_strnew_c ft_strdel ft_memalloc ft_memdel\
+			ft_strcmp  ft_strreset 
 
 FILES = ft_printf parse tool type_csp print_chars print_addr type_di base \
-	type_ox print_int type_uint parse_flags
+		type_ox print_int type_uint parse_flags
 
 FILES+= $(addprefix $(LIB_DIR),$(LIB_FILES))
 
@@ -64,8 +64,6 @@ re: fclean
 	$(MAKE) all
 
 norm:
-	@echo $(RED)
-	@echo $(END)
 	norminette $(SRC) $(INC_DIR) | grep -v Norme -B1 || true
 
 .PHONY: all clean fclean re norm
