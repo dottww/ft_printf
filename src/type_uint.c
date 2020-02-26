@@ -3,14 +3,24 @@
 /*                                                        :::      ::::::::   */
 /*   type_uint.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: weilin <weilin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mdavid <mdavid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/24 11:35:11 by mdavid            #+#    #+#             */
-/*   Updated: 2020/02/25 19:46:43 by weilin           ###   ########.fr       */
+/*   Updated: 2020/02/26 08:23:27 by mdavid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+
+/*
+** FUNCTION: type_uint
+** PARAMTERS: t_data *t: main struct of data.
+** DESCRIPTION:
+** 	Treat the unsigned int conversion, proccessing flags before calling function
+** 	print_int.
+** RETURN:
+** 	None
+*/
 
 void	type_uint(t_data *t)
 {

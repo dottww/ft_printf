@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   tool.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: weilin <weilin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mdavid <mdavid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/20 17:13:59 by weilin            #+#    #+#             */
-/*   Updated: 2020/02/25 19:44:07 by weilin           ###   ########.fr       */
+/*   Updated: 2020/02/26 11:15:20 by mdavid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,11 @@ void	init_int_arg(t_data *t, long int *val)
 	else if (t->mod == MOD_l)
 		*val = (long int)va_arg(t->valist, long int);
 	else if (t->mod == MOD_ll)
-		*val = (long int)va_arg(t->valist, long int);
+		*val = (long long int)va_arg(t->valist, long long int);
+	else if (t->mod == MOD_j)
+		*val = (intmax_t)va_arg(t->valist, intmax_t);
+	else if (t->mod == MOD_z)
+		*val = (size_t)va_arg(t->valist, size_t);
 }
 
 void	init_uint_arg(t_data *t, unsigned long *val)
@@ -47,9 +51,14 @@ void	init_uint_arg(t_data *t, unsigned long *val)
 	else if (t->mod == MOD_h)
 		*val = (short unsigned int)va_arg(t->valist, unsigned int);
 	else if (t->mod == MOD_l)
-		*val = (unsigned long)va_arg(t->valist, unsigned long);
+		*val = (unsigned long)va_arg(t->valist, unsigned long int);
 	else if (t->mod == MOD_ll)
-		*val = (unsigned long)va_arg(t->valist, unsigned long);
+		*val = (unsigned long long int)va_arg(t->valist,
+			unsigned long long int);
+	else if (t->mod == MOD_j)
+		*val = (intmax_t)va_arg(t->valist, intmax_t);
+	else if (t->mod == MOD_z)
+		*val = (size_t)va_arg(t->valist, size_t);
 }
 
 void	conv_octal(t_data *t, unsigned long val)
@@ -64,6 +73,10 @@ void	conv_octal(t_data *t, unsigned long val)
 		t->bf = ft_ultoa_base((unsigned long)val, 8);
 	else if (t->mod == MOD_ll)
 		t->bf = ft_ulltoa_base((unsigned long long)val, 8);
+	else if (t->mod == MOD_j)
+		t->bf = ft_ulltoa_base((intmax_t)val, 8);
+	else if (t->mod == MOD_z)
+		t->bf = ft_ulltoa_base((size_t)val, 8);
 }
 
 void	conv_hexa(t_data *t, unsigned long val)
@@ -78,4 +91,8 @@ void	conv_hexa(t_data *t, unsigned long val)
 		t->bf = ft_ultoa_base((unsigned long)val, 16);
 	else if (t->mod == MOD_ll)
 		t->bf = ft_ulltoa_base((unsigned long long)val, 16);
+	else if (t->mod == MOD_j)
+		t->bf = ft_ulltoa_base((intmax_t)val, 16);
+	else if (t->mod == MOD_z)
+		t->bf = ft_ulltoa_base((size_t)val, 16);
 }

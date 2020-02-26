@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   type_di.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: weilin <weilin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mdavid <mdavid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/21 14:59:08 by mdavid            #+#    #+#             */
-/*   Updated: 2020/02/25 19:42:18 by weilin           ###   ########.fr       */
+/*   Updated: 2020/02/26 09:03:10 by mdavid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 /*
 ** FONCTION: ft_plus_space_for_int
-** PARAMETERS:	t_data *t: pointer on the principal variable structure.
+** PARAMETERS:	t_data *t: main struct of data.
 ** 				int sign: sign of the integer received as parameter.
 ** 				char **val: adress of the number as a string
 ** DESCRIPTION:
@@ -23,7 +23,7 @@
 ** If the sign of the number is negative, the sign '+' is not add.
 ** RETURN:
 ** 	(int)STAT_OK if everything ok.
-** 	(int)STAT_ERR if strjoin/dup return error.
+** 	(int)STAT_ERR if there is a pb in mem allocation return error.
 */
 
 int		ft_plus_space_for_int(t_data *t, char **val, int neg)
@@ -53,7 +53,7 @@ int		ft_plus_space_for_int(t_data *t, char **val, int neg)
 ** 	If flag->minus = 1 flag.zero is ignored, else
 ** RETURN:
 ** 	(int)STAT_OK if everything ok.
-** 	(int)STAT_ERR if strjoin/dup return error.
+** 	(int)STAT_ERR if there is a pb in mem allocation return error.
 */
 
 int		ft_minus_for_int(t_data *t, char **val, char **str_w, int neg)
@@ -85,14 +85,13 @@ int		ft_minus_for_int(t_data *t, char **val, char **str_w, int neg)
 
 /*
 ** FONCTION: ft_prec_for_int
-** PARAMETERS:	t_data *t: pointer on the principal variable structure.
+** PARAMETERS:	t_data *t: main struct of data.
 ** 				char **val: adress of the number as a string
-** 				int neg: boolean for the sign of the number (1-> n < 0)
 ** DESCRIPTION:
-** 	Deal with the flag prec.
+** 	Treat flag prec.
 ** RETURN:
 ** 	(int)STAT_OK if everything ok.
-** 	(int)STAT_ERR if strjoin/dup return error.
+** 	(int)STAT_ERR if there is a pb in mem allocation return error.
 */
 
 int		ft_prec_for_int(t_data *t, char **val)
@@ -122,14 +121,15 @@ int		ft_prec_for_int(t_data *t, char **val)
 
 /*
 ** FONCTION: ft_width_for_int
-** PARAMETERS:	t_data *t: pointer on the principal variable structure.
-** 				char **val: adress of the number as a string
+** PARAMETERS:	t_data *t: main struct of data.
+** 				char **val: adress of the number as a string.
+** 				size_t len: length of the string *val.
+** 				int neg: signe of the number (1:negative, 0:positive).
 ** DESCRIPTION:
-** 	Generate new string made of '+' and the number as string if flag.plus = 1
-** 	If the sign of the number is negative, the sign '+' is not add.
+** 	Treat flag width, taking into acount flags '+',' ','-' and sign of val.
 ** RETURN:
 ** 	(int)STAT_OK if everything ok.
-** 	(int)STAT_ERR if strjoin/dup return error.
+** 	(int)STAT_ERR if there is a pb in mem allocation return error.
 */
 
 int		ft_width_for_int(t_data *t, char **val, size_t len, int neg)
@@ -157,10 +157,10 @@ int		ft_width_for_int(t_data *t, char **val, size_t len, int neg)
 
 /*
 ** FONCTION: type_int
-** PARAMETERS:	t_data *t: pointer on the principal variable structure.
+** PARAMETERS:	t_data *t: main struct of data.
 ** DESCRIPTION:
-** 	Deal with the integer (i/d) argument and write the number processed
-** 	with all its flags to the correct destination (i.e fd).
+** 	Treat the  int conversion, proccessing flags before calling function
+** 	print_int.
 ** RETURN:
 ** 	nothing.
 */

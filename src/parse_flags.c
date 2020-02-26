@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_flags.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: weilin <weilin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mdavid <mdavid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/24 15:55:42 by weilin            #+#    #+#             */
-/*   Updated: 2020/02/25 16:43:54 by weilin           ###   ########.fr       */
+/*   Updated: 2020/02/26 11:24:46 by mdavid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,10 @@ void	parse_mod(const char *fmt, t_data *t)
 		t->mod = MOD_h;
 	else if (fmt[t->i] == 'h' && fmt[t->i + 1] == 'h')
 		t->mod = MOD_hh;
+	else if (fmt[t->i] == 'j')
+		t->mod = MOD_j;
+	else if (fmt[t->i] == 'z')
+		t->mod = MOD_z;
 }
 
 void	parse_prec(const char *fmt, t_data *t)

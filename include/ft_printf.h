@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: weilin <weilin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mdavid <mdavid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 16:37:37 by weilin            #+#    #+#             */
-/*   Updated: 2020/02/25 19:46:36 by weilin           ###   ########.fr       */
+/*   Updated: 2020/02/26 11:13:02 by mdavid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include "libft.h"
 # include <stdarg.h>
 # include <limits.h>
+# include <stdint.h>
 
 typedef	enum	e_stat
 {
@@ -30,6 +31,8 @@ typedef	enum	e_mod
 	MOD_ll,
 	MOD_h,
 	MOD_hh,
+	MOD_j,
+	MOD_z,
 }				t_mod;
 
 typedef	struct	s_flag
@@ -55,7 +58,8 @@ typedef	struct	s_data
 	t_mod	mod;
 }				t_data;
 
-int				ft_printf(const char *fmt, ...);
+int				ft_printf(
+	const char *fmt, ...) __attribute__((format(printf,1,2)));
 
 /*
 ** Functions related to the parsing
